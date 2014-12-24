@@ -1,0 +1,11 @@
+{
+  "name": "regcert",
+  "version": "0.01",
+  "homepage": "https://github.com/interlegis/regcert",
+  "authors": [
+    "Marco Rougeth <marco@rougeth.com>"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
