@@ -1,4 +1,4 @@
-from django.test import Client, TestCase
+from django.test import TestCase
 
 
 class HomeNotAuthenticatedTestCase(TestCase):
@@ -12,4 +12,3 @@ class HomeNotAuthenticatedTestCase(TestCase):
     def test_template(self):
         self.assertTemplateUsed(self.response,
                                 'core/home_not_authenticated.html')
-
