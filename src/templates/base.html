@@ -10,17 +10,22 @@
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
 
     <style>
-        .container {
-            width: auto;
-            max-width: 680px;
-            padding: 0 15px;
-        }
         .footer {
             position: absolute;
             bottom: 0;
             width: 100%;
             height: 60px;
-            background-color: #f5f5f5;
+            background-color: #e7e7e7;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .vertical-divider {
+            height: 50px;
+            border-left: 1px solid #eee;
+        }
+        .rc-page-header {
+            border-bottom: 0;
         }
         .rc-lead {
             margin-bottom: 0;
@@ -32,21 +37,48 @@
             padding: 10px 0 10px 0;
             color: #666;
         }
+        .rc-align-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="page-header">
+        <div class="page-header rc-page-header">
             <h1><a href="{% url 'home' %}">regcert</a></h1>
             <p class="lead rc-lead">Sistema de Registro de Certificados</p>
         </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse center-block" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Certificados <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Novo</a></li>
+                            <li><a href="#">Consultar</a></li>
+                            <li><a href="#">Anular</a></li>
+                        </ul>
+                    </li>
+                    <li class="vertical-divider"></li>
+                    <li><a href="#">Cursos</a></li>
+                    <li><a href="#">Estudantes</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+
+
 
     {% block content %}
     {% endblock %}
 
-    </div>
-    <div class="footer">
-        footer
     </div>
 
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
