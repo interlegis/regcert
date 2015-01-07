@@ -15,11 +15,11 @@ class Course(models.Model):
     end = models.DateField()
 
 
-class Enrolment(models.Model):
+class Enrollment(models.Model):
     student = models.ForeignKey(Student)
     course = models.ForeignKey(Course)
 
 
 class Certificate(models.Model):
-    enrolment = models.ForeignKey(Enrolment)
+    enrolment = models.ForeignKey(Enrollment)
     date_time = models.DateTimeField()
