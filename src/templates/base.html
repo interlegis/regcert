@@ -1,5 +1,5 @@
 {% load staticfiles %}
-
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,25 +56,22 @@
             <div class="collapse navbar-collapse center-block" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Certificados <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{% trans 'Certificate' %} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Novo</a></li>
-                            <li><a href="#">Consultar</a></li>
-                            <li><a href="#">Anular</a></li>
+                            <li><a href="#">{% trans 'New' %}</a></li>
+                            <li><a href="#">{% trans 'List' %}</a></li>
+                            <li><a href="#">{% trans 'Cancel' %}</a></li>
                         </ul>
                     </li>
                     <li class="vertical-divider"></li>
-                    <li><a href="#">Cursos</a></li>
-                    <li><a href="{% url 'students' %}">Estudantes</a></li>
-                    <li><a href="#">Relatórios</a></li>
+                    <li><a href="#">{% trans 'Courses' %}</a></li>
+                    <li><a href="{% url 'students' %}">{% trans 'Students' %}</a></li>
+                    <li><a href="#">{% trans 'Reports' %}</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container">
-
-
-
 
     {% block content %}
     {% endblock %}

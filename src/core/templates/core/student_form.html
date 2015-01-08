@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load widget_tweaks %}
 
 {% block content %}
@@ -68,7 +69,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Cadastrar novo aluno</button>
+            <button type="submit" class="btn btn-default">{% trans 'Add new student' %}</button>
         </div>
     </div>
 </form>
