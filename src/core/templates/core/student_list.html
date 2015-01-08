@@ -25,9 +25,14 @@
             <td>{{ student.nationality }}</td>
             <td>{{ student.rg }}</td>
             <td>
-                <a class="btn btn-default btn-sm" href="{% url 'student_update' student.id %}">
-                  <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </a>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-default btn-sm" href="{% url 'student_update' student.id %}">
+                      <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-default btn-sm" href="{% url 'student_delete' student.id %}">
+                      <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </div>
             </td>
         </tr>
         {% endfor %}
