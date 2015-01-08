@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.utils.decorators import method_decorator
 
 from core.models import Student
@@ -25,7 +25,10 @@ class StudentView(LoginRequiredMixin, ListView):
     context_object_name = 'students'
 
 
-
 class StudentCreate(LoginRequiredMixin, CreateView):
+    model = Student
+    success_url = '/alunos'
+
+class StudentUpdate(LoginRequiredMixin, UpdateView):
     model = Student
     success_url = '/alunos'
