@@ -5,7 +5,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 
-from core.models import Student
+from core.models import Course, Student
 
 
 class LoginRequiredMixin(object):
@@ -39,3 +39,13 @@ class StudentDelete(LoginRequiredMixin, DeleteView):
     model = Student
     context_object_name = 'student'
     success_url = '/alunos'
+
+
+class CourseView(LoginRequiredMixin, ListView):
+    model = Course
+    context_object_name = 'courses'
+
+
+class CourseCreate(LoginRequiredMixin, CreateView):
+    model = Course
+    success_url = '/cursos'
