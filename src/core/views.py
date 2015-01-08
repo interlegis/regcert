@@ -49,3 +49,14 @@ class CourseView(LoginRequiredMixin, ListView):
 class CourseCreate(LoginRequiredMixin, CreateView):
     model = Course
     success_url = '/cursos'
+
+
+class CourseUpdate(LoginRequiredMixin, UpdateView):
+    model = Course
+    success_url = '/cursos'
+
+
+class CourseDelete(LoginRequiredMixin, DeleteView):
+    model = Course
+    context_object_name = 'course'
+    success_url = '/cursos'

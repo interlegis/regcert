@@ -18,6 +18,9 @@ class Course(models.Model):
     begin = models.DateField()
     end = models.DateField()
 
+    def __str__(self):
+        return self.name
+
 
 class Enrollment(models.Model):
     student = models.ForeignKey(Student)
