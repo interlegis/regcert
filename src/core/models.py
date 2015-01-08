@@ -8,6 +8,7 @@ class Student(models.Model):
     rg = models.CharField(max_length=15)
     registration_date_time = models.DateTimeField(auto_now_add=True)
 
+
 class Course(models.Model):
     name = models.CharField(max_length=40)
     hours = models.IntegerField()
