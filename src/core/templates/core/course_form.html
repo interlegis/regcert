@@ -69,7 +69,10 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">{% trans 'Add new course' %}</button>
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-primary">{% trans 'Add new course' %}</button>
+                <button class="btn btn-default" onclick="history.back(-1)">{% trans 'Cancel' %}</button>
+            </div>
         </div>
     </div>
 </form>
