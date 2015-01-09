@@ -28,5 +28,5 @@ class Enrollment(models.Model):
 
 
 class Certificate(models.Model):
-    enrolment = models.ForeignKey(Enrollment)
+    enrollment = models.ForeignKey(Enrollment)
     date_time = models.DateTimeField()

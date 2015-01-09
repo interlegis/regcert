@@ -19,9 +19,9 @@
         {% for certificate in certificates %}
         <tr>
             <td>{{ certificate.id }}</td>
-            <td>{{ certificate.enrolment.id }}</td>
-            <td>{{ certificate.enrolment.course.name }}</td>
-            <td>{{ certificate.enrolment.student.name }}</td>
+            <td>{{ certificate.enrollment.id }}</td>
+            <td>{{ certificate.enrollment.course.name }}</td>
+            <td>{{ certificate.enrollment.student.name }}</td>
             <td>
                 <div class="btn-group" role="group">
                     <a class="btn btn-default btn-sm" href="{% url 'student_update' certificate.id %}">
