@@ -23,8 +23,8 @@
             <td>{{ course.id }}</td>
             <td>{{ course.name }}</td>
             <td>{{ course.hours }}</td>
-            <td>{{ course.begin }}</td>
-            <td>{{ course.end }}</td>
+            <td>{{ course.start_date }}</td>
+            <td>{{ course.end_date }}</td>
             <td>
                 <div class="btn-group" role="group">
                     <a class="btn btn-default btn-sm" href="{% url 'course_update' course.id %}">

@@ -15,8 +15,8 @@ class Student(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=40)
     hours = models.IntegerField()
-    begin = models.DateField()
-    end = models.DateField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     def __str__(self):
         return self.name
