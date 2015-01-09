@@ -5,7 +5,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 
-from core.models import Course, Student
+from core.models import Certificate, Course, Student
 
 
 class LoginRequiredMixin(object):
@@ -60,3 +60,8 @@ class CourseDelete(LoginRequiredMixin, DeleteView):
     model = Course
     context_object_name = 'course'
     success_url = '/cursos'
+
+
+class CertificateView(LoginRequiredMixin, ListView):
+    model = Certificate
+    context_object_name = 'certificates'

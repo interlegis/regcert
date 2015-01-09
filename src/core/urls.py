@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from core.views import (StudentCreate, StudentView, StudentUpdate,
                         StudentDelete, CourseView, CourseCreate, CourseUpdate,
-                        CourseDelete)
+                        CourseDelete, CertificateView)
 
 
 urlpatterns = patterns(
@@ -19,6 +19,7 @@ urlpatterns = patterns(
         name='course_update'),
     url(r'^cursos/remover/(?P<pk>[\w-]+)$', CourseDelete.as_view(),
         name='course_delete'),
+    url(r'^certificados$', CertificateView.as_view(), name='certificates'),
 )
 
 
