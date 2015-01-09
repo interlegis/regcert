@@ -26,6 +26,10 @@ class Enrollment(models.Model):
     student = models.ForeignKey(Student)
     course = models.ForeignKey(Course)
 
+    def __str__(self):
+        return '{}# {} - {}'.format(self.id, self.course.name,
+                                    self.student.name)
+
 
 class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment)

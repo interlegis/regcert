@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 
@@ -65,3 +65,19 @@ class CourseDelete(LoginRequiredMixin, DeleteView):
 class CertificateView(LoginRequiredMixin, ListView):
     model = Certificate
     context_object_name = 'certificates'
+
+
+class CertificateCreate(LoginRequiredMixin, CreateView):
+    model = Certificate
+    success_url = '/certificados'
+
+
+class CertificateUpdate(LoginRequiredMixin, UpdateView):
+    model = Certificate
+    success_url = '/certificados'
+
+
+class CertificateDelete(LoginRequiredMixin, DeleteView):
+    model = Certificate
+    context_object_name = 'certificate'
+    success_url = '/certificados'
