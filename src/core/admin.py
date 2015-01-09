@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from core.models import Student, Course, Certificate
+from core.models import Enrollment, Student, Course, Certificate
 
 # Register your models here.
-admin.site.register(Student)
-admin.site.register(Course)
+admin.site.register(Enrollment)
 admin.site.register(Certificate)
+admin.site.register(Course)
+admin.site.register(Student)
