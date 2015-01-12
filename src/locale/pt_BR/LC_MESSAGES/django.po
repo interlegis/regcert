@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-12 12:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/templates/core/certificate_confirm_delete.html:9
+#: core/templates/core/student_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete the student %(student)s?"
+msgstr ""
+
+#: core/templates/core/certificate_confirm_delete.html:11
+#: core/templates/core/course_confirm_delete.html:11
+#: core/templates/core/student_confirm_delete.html:11
+msgid "Confirm"
+msgstr ""
+
+#: core/templates/core/certificate_confirm_delete.html:12
+#: core/templates/core/certificate_form.html:47
+#: core/templates/core/course_confirm_delete.html:12
+#: core/templates/core/course_form.html:74
+#: core/templates/core/student_confirm_delete.html:12
+#: core/templates/core/student_form.html:74
+msgid "Cancel"
+msgstr ""
+
+#: core/templates/core/certificate_form.html:46
+#: core/templates/core/certificate_list.html:7
+msgid "Add new certificate"
+msgstr ""
+
+#: core/templates/core/certificate_list.html:7 templates/base.html:58
+msgid "Certificates"
+msgstr "Certificados"
+
+#: core/templates/core/certificate_list.html:12
+msgid "Validation code"
+msgstr ""
+
+#: core/templates/core/certificate_list.html:13
+#: core/templates/core/certificate_list.html:14
+msgid "Enroll"
+msgstr "Matrícula"
+
+#: core/templates/core/certificate_list.html:15
+msgid "Course"
+msgstr "Curso"
+
+#: core/templates/core/certificate_list.html:16
+msgid "Date/Time"
+msgstr "Data/Hora"
+
+#: core/templates/core/course_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete the certificate %(certificate)s?"
+msgstr ""
+
+#: core/templates/core/course_form.html:73
+#: core/templates/core/course_list.html:7
+msgid "Add new course"
+msgstr "Adicionar novo curso"
+
+#: core/templates/core/course_list.html:7 templates/base.html:59
+msgid "Courses"
+msgstr "Cursos"
+
+#: core/templates/core/course_list.html:13
+#: core/templates/core/student_list.html:13
+msgid "Name"
+msgstr "Nome"
+
+#: core/templates/core/course_list.html:14
+msgid "Hours"
+msgstr "Duração"
+
+#: core/templates/core/course_list.html:15
+msgid "Start date"
+msgstr ""
+
+#: core/templates/core/course_list.html:16
+msgid "End date"
+msgstr ""
+
+#: core/templates/core/course_list.html:17
+#: core/templates/core/student_list.html:17
+msgid "Options"
+msgstr "Opções"
+
+#: core/templates/core/student_form.html:73
+#: core/templates/core/student_list.html:7
+msgid "Add new student"
+msgstr ""
+
+#: core/templates/core/student_list.html:7 templates/base.html:60
+msgid "Students"
+msgstr ""
+
+#: core/templates/core/student_list.html:14
+msgid "Birthday"
+msgstr ""
+
+#: core/templates/core/student_list.html:15
+msgid "Nationality"
+msgstr ""
+
+#: core/templates/core/student_list.html:16
+msgid "RG"
+msgstr ""
+
+#: core/urls.py:11
+msgid "^$"
+msgstr ""
+
+#: core/urls.py:14
+msgid "^students$"
+msgstr "^estudantes$"
+
+#: core/urls.py:15
+msgid "^students/create$"
+msgstr "^estudantes/adicionar$"
+
+#: core/urls.py:17
+msgid "^students/edit/(?P<pk>[\\w-]+)$"
+msgstr ""
+
+#: core/urls.py:19
+msgid "^students/delete/(?P<pk>[\\w-]+)$"
+msgstr "^estudantes/deletar(?<pl>[\\w-]+)$"
+
+#: core/urls.py:23
+msgid "^courses$"
+msgstr "^cursos%"
+
+#: core/urls.py:24
+msgid "^courses/create$"
+msgstr "^cursos/adicionar$"
+
+#: core/urls.py:26
+msgid "^courses/edit/(?P<pk>[\\w-]+)$"
+msgstr "^cursos/editar/(?P<pk>[\\w-]+)$"
+
+#: core/urls.py:28
+msgid "^courses/delete/(?P<pk>[\\w-]+)$"
+msgstr "^cursos/deletar/(?P<pk>[\\w-]+)$"
+
+#: core/urls.py:32
+msgid "^certificates$"
+msgstr "^certificados$"
+
+#: core/urls.py:33
+msgid "^certificates/create$"
+msgstr "^certificados/criar$"
+
+#: core/urls.py:35
+msgid "^certificates/edit/(?P<pk>[\\w-]+)$"
+msgstr "^certificados/editar/(?P<pk>[\\w-]+)$"
+
+#: core/urls.py:37
+msgid "^certificates/delete/(?P<pk>[\\w-]+)$"
+msgstr "^certificados/deletar/(?P<pk>[\\w-]+)$"
+
+#: templates/base.html:61
+msgid "Reports"
+msgstr "Relatórios"
