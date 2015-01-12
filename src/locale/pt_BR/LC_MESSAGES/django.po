@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-12 12:55+0000\n"
+"POT-Creation-Date: 2015-01-12 17:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: core/templates/core/course_confirm_delete.html:12
 #: core/templates/core/course_form.html:74
 #: core/templates/core/student_confirm_delete.html:12
-#: core/templates/core/student_form.html:74
+#: core/templates/core/student_create.html:22
 msgid "Cancel"
 msgstr ""
 
@@ -44,9 +44,9 @@ msgstr ""
 msgid "Add new certificate"
 msgstr ""
 
-#: core/templates/core/certificate_list.html:7 templates/base.html:58
+#: core/templates/core/certificate_list.html:7 templates/base.html:63
 msgid "Certificates"
-msgstr "Certificados"
+msgstr ""
 
 #: core/templates/core/certificate_list.html:12
 msgid "Validation code"
@@ -55,15 +55,15 @@ msgstr ""
 #: core/templates/core/certificate_list.html:13
 #: core/templates/core/certificate_list.html:14
 msgid "Enroll"
-msgstr "Matrícula"
+msgstr ""
 
 #: core/templates/core/certificate_list.html:15
 msgid "Course"
-msgstr "Curso"
+msgstr ""
 
 #: core/templates/core/certificate_list.html:16
 msgid "Date/Time"
-msgstr "Data/Hora"
+msgstr ""
 
 #: core/templates/core/course_confirm_delete.html:9
 #, python-format
@@ -73,107 +73,55 @@ msgstr ""
 #: core/templates/core/course_form.html:73
 #: core/templates/core/course_list.html:7
 msgid "Add new course"
-msgstr "Adicionar novo curso"
+msgstr ""
 
-#: core/templates/core/course_list.html:7 templates/base.html:59
+#: core/templates/core/course_list.html:7 templates/base.html:64
 msgid "Courses"
-msgstr "Cursos"
+msgstr ""
 
-#: core/templates/core/course_list.html:13
-#: core/templates/core/student_list.html:13
+#: core/templates/core/course_list.html:18
+#: core/templates/core/student_list.html:18
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
-#: core/templates/core/course_list.html:14
+#: core/templates/core/course_list.html:19
 msgid "Hours"
-msgstr "Duração"
+msgstr ""
 
-#: core/templates/core/course_list.html:15
+#: core/templates/core/course_list.html:20
 msgid "Start date"
 msgstr ""
 
-#: core/templates/core/course_list.html:16
+#: core/templates/core/course_list.html:21
 msgid "End date"
 msgstr ""
 
-#: core/templates/core/course_list.html:17
-#: core/templates/core/student_list.html:17
+#: core/templates/core/course_list.html:22
+#: core/templates/core/student_list.html:22
 msgid "Options"
-msgstr "Opções"
+msgstr ""
 
-#: core/templates/core/student_form.html:73
+#: core/templates/core/student_create.html:21
 #: core/templates/core/student_list.html:7
 msgid "Add new student"
 msgstr ""
 
-#: core/templates/core/student_list.html:7 templates/base.html:60
+#: core/templates/core/student_list.html:7 templates/base.html:65
 msgid "Students"
 msgstr ""
 
-#: core/templates/core/student_list.html:14
+#: core/templates/core/student_list.html:19
 msgid "Birthday"
 msgstr ""
 
-#: core/templates/core/student_list.html:15
+#: core/templates/core/student_list.html:20
 msgid "Nationality"
 msgstr ""
 
-#: core/templates/core/student_list.html:16
+#: core/templates/core/student_list.html:21
 msgid "RG"
 msgstr ""
 
-#: core/urls.py:11
-msgid "^$"
-msgstr ""
-
-#: core/urls.py:14
-msgid "^students$"
-msgstr "^estudantes$"
-
-#: core/urls.py:15
-msgid "^students/create$"
-msgstr "^estudantes/adicionar$"
-
-#: core/urls.py:17
-msgid "^students/edit/(?P<pk>[\\w-]+)$"
-msgstr ""
-
-#: core/urls.py:19
-msgid "^students/delete/(?P<pk>[\\w-]+)$"
-msgstr "^estudantes/deletar(?<pl>[\\w-]+)$"
-
-#: core/urls.py:23
-msgid "^courses$"
-msgstr "^cursos%"
-
-#: core/urls.py:24
-msgid "^courses/create$"
-msgstr "^cursos/adicionar$"
-
-#: core/urls.py:26
-msgid "^courses/edit/(?P<pk>[\\w-]+)$"
-msgstr "^cursos/editar/(?P<pk>[\\w-]+)$"
-
-#: core/urls.py:28
-msgid "^courses/delete/(?P<pk>[\\w-]+)$"
-msgstr "^cursos/deletar/(?P<pk>[\\w-]+)$"
-
-#: core/urls.py:32
-msgid "^certificates$"
-msgstr "^certificados$"
-
-#: core/urls.py:33
-msgid "^certificates/create$"
-msgstr "^certificados/criar$"
-
-#: core/urls.py:35
-msgid "^certificates/edit/(?P<pk>[\\w-]+)$"
-msgstr "^certificados/editar/(?P<pk>[\\w-]+)$"
-
-#: core/urls.py:37
-msgid "^certificates/delete/(?P<pk>[\\w-]+)$"
-msgstr "^certificados/deletar/(?P<pk>[\\w-]+)$"
-
-#: templates/base.html:61
+#: templates/base.html:66
 msgid "Reports"
-msgstr "Relatórios"
+msgstr ""
