@@ -6,6 +6,11 @@
 <div class="page-header">
     <h1>{% trans 'Courses' %} <small><a href="{% url 'course_create' %}">{% trans 'Add new course' %}</a></small></h1>
 </div>
+{% if not courses %}
+<div class="alert alert-warning" role="alert">
+    <p><b>No courses found!</b> Click <a href="{% url 'course_create' %}">here</a> to add one.</p>
+</div>
+{% else %}
 <table class="table table-hover">
     <thead>
         <tr>
@@ -39,5 +44,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 {% endblock %}
 

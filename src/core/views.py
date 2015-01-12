@@ -46,7 +46,6 @@ class StudentCreate(View):
         if student_form.is_valid() and student_courses_form.is_valid():
             student = student_form.save()
             data = student_courses_form.clean()
-            print(data)
             for course in data['courses']:
 
                 c = Enrollment(

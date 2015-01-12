@@ -6,6 +6,11 @@
 <div class="page-header">
     <h1>{% trans 'Students' %} <small><a href="{% url 'student_create' %}">{% trans 'Add new student' %}</a></small></h1>
 </div>
+{% if not students %}
+<div class="alert alert-warning" role="alert">
+    <p><b>No students found!</b> Click <a href="{% url 'student_create' %}">here</a> to add one. Remeber, to insert a new student, a course should be added first.</p>
+</div>
+{% else %}
 <table class="table table-hover">
     <thead>
         <tr>
@@ -39,5 +44,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 {% endblock %}
 
