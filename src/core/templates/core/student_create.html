@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<form method="post" class="form-horizontal">
+    {% csrf_token %}
+
+    {% include 'core/student_form_snippet.html' %}
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-primary">{% trans 'Add new student' %}</button>
+                <button class="btn btn-default" onclick="history.back(-1)">{% trans 'Cancel' %}</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

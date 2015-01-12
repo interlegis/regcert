@@ -1,0 +1,78 @@
+{% load widget_tweaks %}
+
+    {% if student_form.non_field_errors %}
+    <div class="alert alert-warning" role="alert">
+        {{ student_form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    {% if student_form.name.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ student_form.name.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ student_form.name.id_for_label }}" class="col-sm-2 control-label">{{ student_form.name.label }}</label>
+        <div class="col-sm-10">
+            {{ student_form.name | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if student_form.birthday.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ student_form.birthday.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ student_form.birthday.id_for_label }}" class="col-sm-2 control-label">{{ student_form.birthday.label }}</label>
+        <div class="col-sm-10">
+            {{ student_form.birthday | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if student_form.nationality.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ student_form.nationality.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ student_form.nationality.id_for_label }}" class="col-sm-2 control-label">{{ student_form.nationality.label }}</label>
+        <div class="col-sm-10">
+            {{ student_form.nationality | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if student_form.rg.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ student_form.rg.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ student_form.rg.id_for_label }}" class="col-sm-2 control-label">{{ student_form.rg.label }}</label>
+        <div class="col-sm-10">
+            {{ student_form.rg | add_class:"form-control" }}
+        </div>
+    </div>
+    {% for course in student_courses_form %}
+    {% if course.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ course.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ course.id_for_label }}" class="col-sm-2 control-label">{{ course.label }}</label>
+        <div class="col-sm-10 checkbox">
+            {{ course }}
+        </div>
+    </div>
+    {% endfor %}
