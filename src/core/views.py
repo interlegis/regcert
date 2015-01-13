@@ -24,6 +24,7 @@ def home(request):
 class StudentView(LoginRequiredMixin, ListView):
     model = Student
     context_object_name = 'students'
+    template_name_suffix = '/list'
 
 
 class StudentCreate(View):
@@ -36,7 +37,7 @@ class StudentCreate(View):
             'student_form': student_form,
             'student_courses_form': student_courses_form
         }
-        return render(request, 'core/student_create.html', context)
+        return render(request, 'core/student/create.html', context)
 
     def post(self, request):
         student_form = StudentForm(request.POST, prefix='student')
@@ -59,7 +60,7 @@ class StudentCreate(View):
                 'student_form': student_form,
                 'student_courses_form': student_courses_form
             }
-        return render(request, 'core/student_create.html', context)
+        return render(request, 'core/student/create.html', context)
 
 
 class StudentUpdate(LoginRequiredMixin, UpdateView):
