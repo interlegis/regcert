@@ -71,27 +71,32 @@ class StudentUpdate(LoginRequiredMixin, UpdateView):
 class StudentDelete(LoginRequiredMixin, DeleteView):
     model = Student
     context_object_name = 'student'
+    template_name_suffix = '/confirm_delete'
     success_url = '/alunos'
 
 
 class CourseView(LoginRequiredMixin, ListView):
     model = Course
     context_object_name = 'courses'
+    template_name_suffix = '/list'
 
 
 class CourseCreate(LoginRequiredMixin, CreateView):
     model = Course
     success_url = '/cursos'
+    template_name_suffix = '/form'
 
 
 class CourseUpdate(LoginRequiredMixin, UpdateView):
     model = Course
     success_url = '/cursos'
+    template_name_suffix = '/form'
 
 
 class CourseDelete(LoginRequiredMixin, DeleteView):
     model = Course
     context_object_name = 'course'
+    template_name_suffix = '/confirm_delete'
     success_url = '/cursos'
 
 
