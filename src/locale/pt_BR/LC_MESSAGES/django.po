@@ -28,7 +28,7 @@ msgstr ""
 #: core/templates/core/course_confirm_delete.html:11
 #: core/templates/core/student_confirm_delete.html:11
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: core/templates/core/certificate_confirm_delete.html:12
 #: core/templates/core/certificate_form.html:47
@@ -37,33 +37,33 @@ msgstr ""
 #: core/templates/core/student_confirm_delete.html:12
 #: core/templates/core/student_create.html:22
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: core/templates/core/certificate_form.html:46
 #: core/templates/core/certificate_list.html:7
 msgid "Add new certificate"
-msgstr ""
+msgstr "Adicionar novo certificado"
 
 #: core/templates/core/certificate_list.html:7 templates/base.html:63
 msgid "Certificates"
-msgstr ""
+msgstr "Certificados"
 
 #: core/templates/core/certificate_list.html:12
 msgid "Validation code"
-msgstr ""
+msgstr "Código de validação"
 
 #: core/templates/core/certificate_list.html:13
 #: core/templates/core/certificate_list.html:14
 msgid "Enroll"
-msgstr ""
+msgstr "Matrícula"
 
 #: core/templates/core/certificate_list.html:15
 msgid "Course"
-msgstr ""
+msgstr "Curso"
 
 #: core/templates/core/certificate_list.html:16
 msgid "Date/Time"
-msgstr ""
+msgstr "Data/Hora"
 
 #: core/templates/core/course_confirm_delete.html:9
 #, python-format
@@ -73,28 +73,28 @@ msgstr ""
 #: core/templates/core/course_form.html:73
 #: core/templates/core/course_list.html:7
 msgid "Add new course"
-msgstr ""
+msgstr "Adicionar novo curso"
 
 #: core/templates/core/course_list.html:7 templates/base.html:64
 msgid "Courses"
-msgstr ""
+msgstr "Cursos"
 
 #: core/templates/core/course_list.html:18
 #: core/templates/core/student_list.html:18
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: core/templates/core/course_list.html:19
 msgid "Hours"
-msgstr ""
+msgstr "Duração"
 
 #: core/templates/core/course_list.html:20
 msgid "Start date"
-msgstr ""
+msgstr "Data de início"
 
 #: core/templates/core/course_list.html:21
 msgid "End date"
-msgstr ""
+msgstr "Data de término"
 
 #: core/templates/core/course_list.html:22
 #: core/templates/core/student_list.html:22
@@ -104,19 +104,19 @@ msgstr ""
 #: core/templates/core/student_create.html:21
 #: core/templates/core/student_list.html:7
 msgid "Add new student"
-msgstr ""
+msgstr "Adicionar novo estudante"
 
 #: core/templates/core/student_list.html:7 templates/base.html:65
 msgid "Students"
-msgstr ""
+msgstr "Estudantes"
 
 #: core/templates/core/student_list.html:19
 msgid "Birthday"
-msgstr ""
+msgstr "Data de nascimento"
 
 #: core/templates/core/student_list.html:20
 msgid "Nationality"
-msgstr ""
+msgstr "Nacionalidade"
 
 #: core/templates/core/student_list.html:21
 msgid "RG"
@@ -124,4 +124,4 @@ msgstr ""
 
 #: templates/base.html:66
 msgid "Reports"
-msgstr ""
+msgstr "Relatórios"
