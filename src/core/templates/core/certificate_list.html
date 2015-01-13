@@ -6,6 +6,11 @@
 <div class="page-header">
     <h1>{% trans 'Certificates' %} <small><a href="{% url 'certificate_create' %}">{% trans 'Add new certificate' %}</a></small></h1>
 </div>
+{% if not certificates %}
+<div class="alert alert-warning" role="alert">
+    <p><b>No certificate found!</b> Click <a href="{% url 'certificate_create' %}">here</a> to add one.</p>
+</div>
+{% else %}
 <table class="table table-hover">
     <thead>
         <tr>
@@ -38,5 +43,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 {% endblock %}
 
