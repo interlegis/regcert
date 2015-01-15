@@ -6,11 +6,20 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <p>{% blocktrans %}Are you sure you want to delete the certificate {{ certificate }}?{% endblocktrans %}</p>
+    <p>{% blocktrans %}Are you sure you want to delete the course <b>{{ course }}</b>?{% endblocktrans %}</p>
+    {% if enrollments %}
+    <p>The following enrollments will be deleted:</p>
+    <ul>
+        {% for enroll in enrollments %}
+           <li><b>{{ enroll.student }}</b> - {{ enroll.course }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="btn-group" role="group">
         <input type="submit" class="btn btn-danger" value="{% trans 'Confirm' %}" />
         <input type="button" class="btn btn-default" onclick="history.back(-1)" value="{% trans 'Cancel' %}" />
     </div>
 </form>
+
 
 {% endblock %}

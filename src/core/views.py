@@ -152,6 +152,11 @@ class CourseDelete(LoginRequiredMixin, DeleteView):
     template_name_suffix = '/confirm_delete'
     success_url = '/cursos'
 
+    def get_context_data(self, **kwargs):
+        context = super(CourseDelete, self).get_context_data(**kwargs)
+        context['enrollments'] = Enrollment.objects.filter(course=self.object)
+        return context
+
 
 class CertificateView(LoginRequiredMixin, ListView):
     model = Certificate
