@@ -11,4 +11,4 @@ class StudentForm(forms.ModelForm):
 
 class StudentCoursesForm(forms.Form):
     courses = forms.ModelMultipleChoiceField(queryset=Course.objects.all(),
-        widget=forms.CheckboxSelectMultiple)
+        widget=forms.CheckboxSelectMultiple, required=False)

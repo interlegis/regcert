@@ -61,7 +61,7 @@
             {{ student_form.rg | add_class:"form-control" }}
         </div>
     </div>
-    {% for course in student_courses_form %}
+    {% for course in courses_form %}
     {% if course.errors %}
     <div class="alert alert-danger" role="alert">
         {{ course.errors }}
