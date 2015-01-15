@@ -24,7 +24,7 @@ def home(request):
 class StudentView(LoginRequiredMixin, ListView):
     model = Student
     context_object_name = 'students'
-    template_name_suffix = '/list'
+    template_name = 'core/student/list.html'
 
 
 class StudentCreate(View):
@@ -124,26 +124,26 @@ class StudentUpdate(View):
 class StudentDelete(LoginRequiredMixin, DeleteView):
     model = Student
     context_object_name = 'student'
-    template_name_suffix = '/confirm_delete'
+    template_name = '/core/student/confirm_delete.html'
     success_url = '/alunos'
 
 
 class CourseView(LoginRequiredMixin, ListView):
     model = Course
     context_object_name = 'courses'
-    template_name_suffix = '/list'
+    template_name = 'core/course/list.html'
 
 
 class CourseCreate(LoginRequiredMixin, CreateView):
     model = Course
     success_url = '/cursos'
-    template_name_suffix = '/form'
+    template_name = 'core/course/form.html'
 
 
 class CourseUpdate(LoginRequiredMixin, UpdateView):
     model = Course
     success_url = '/cursos'
-    template_name_suffix = '/form'
+    template_name = 'core/course/form.html'
 
 
 class CourseDelete(LoginRequiredMixin, DeleteView):
