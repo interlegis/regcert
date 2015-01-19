@@ -166,20 +166,24 @@ class CourseDelete(LoginRequiredMixin, DeleteView):
 class CertificateView(LoginRequiredMixin, ListView):
     model = Certificate
     context_object_name = 'certificates'
+    template_name = 'core/certificate/list.html'
 
 
 class CertificateCreate(LoginRequiredMixin, CreateView):
     model = Certificate
     fields = ['enrollment', 'date_time']
+    template_name = 'core/certificate/form.html'
     success_url = '/certificados'
 
 
 class CertificateUpdate(LoginRequiredMixin, UpdateView):
     model = Certificate
+    template_name = 'core/certificate/form.html'
     success_url = '/certificados'
 
 
 class CertificateDelete(LoginRequiredMixin, DeleteView):
     model = Certificate
     context_object_name = 'certificate'
+    template_name = 'core/certificate/confirm_delete.html'
     success_url = '/certificados'
