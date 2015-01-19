@@ -1,5 +1,8 @@
 from uuid import uuid4
+
 from django.db import models
+
+from baco import Baco, base16
 
 
 class Student(models.Model):
@@ -39,5 +42,5 @@ class Certificate(models.Model):
 
     def save(self, *args, **kwargs):
         uuid = uuid4()
-        self.verification_code = uuid.hex
+        self.verification_code = Baco.to_62(uuid.hex, base16)
         super(Certificate, self).save(*args, **kwargs)

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% load pybaco %}
 
 {% block content %}
 
@@ -25,12 +24,16 @@
     <tbody>
         {% for certificate in certificates %}
         <tr>
-            <td>{{ certificate.verification_code|hex_to_base62_first_6 }}</td>
+            <td>{{ certificate.verification_code }}</td>
             <td>{{ certificate.enrollment.course.name }}</td>
             <td>{{ certificate.enrollment.student.name }}</td>
             <td>{{ certificate.date_time }}</td>
             <td>
                 <div class="btn-group" role="group">
+
+                    <a class="btn btn-default btn-sm" href="{% url 'certificate_update' certificate.id %}">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    </a>
                     <a class="btn btn-default btn-sm" href="{% url 'certificate_update' certificate.id %}">
                       <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
