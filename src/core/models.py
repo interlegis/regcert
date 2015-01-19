@@ -1,3 +1,4 @@
+from uuid import uuid4
 from django.db import models
 
 
@@ -33,4 +34,10 @@ class Enrollment(models.Model):
 
 class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment)
+    verification_code = models.CharField(max_length=32, unique=True)
     date_time = models.DateTimeField()
+
+    def save(self, *args, **kwargs):
+        uuid = uuid4()
+        self.verification_code = uuid.hex
+        super(Certificate, self).save(*args, **kwargs)

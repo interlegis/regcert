@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load pybaco %}
 
 {% block content %}
 
@@ -16,7 +17,6 @@
         <tr>
             <th>{% trans 'Validation code' %}</th>
             <th>{% trans 'Enroll' %}</th>
-            <th>{% trans 'Enroll' %}</th>
             <th>{% trans 'Course' %}</th>
             <th>{% trans 'Date/Time' %}</th>
         </tr>
@@ -24,8 +24,7 @@
     <tbody>
         {% for certificate in certificates %}
         <tr>
-            <td>{{ certificate.id }}</td>
-            <td>{{ certificate.enrollment.id }}</td>
+            <td>{{ certificate.verification_code|hex_to_base62_first_6 }}</td>
             <td>{{ certificate.enrollment.course.name }}</td>
             <td>{{ certificate.enrollment.student.name }}</td>
             <td>{{ certificate.date_time }}</td>

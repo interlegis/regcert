@@ -165,6 +165,7 @@ class CertificateView(LoginRequiredMixin, ListView):
 
 class CertificateCreate(LoginRequiredMixin, CreateView):
     model = Certificate
+    fields = ['enrollment', 'date_time']
     success_url = '/certificados'
 
 
