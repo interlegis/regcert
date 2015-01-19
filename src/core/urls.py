@@ -28,5 +28,3 @@ urlpatterns = patterns(
     url(r'^certificados/remover/(?P<pk>[\w-]+)$', CertificateDelete.as_view(),
         name='certificate_delete'),
 )
-
-
