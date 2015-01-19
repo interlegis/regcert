@@ -124,8 +124,13 @@ class StudentUpdate(View):
 class StudentDelete(LoginRequiredMixin, DeleteView):
     model = Student
     context_object_name = 'student'
-    template_name = '/core/student/confirm_delete.html'
+    template_name = 'core/student/confirm_delete.html'
     success_url = '/alunos'
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentDelete, self).get_context_data(**kwargs)
+        context['enrollments'] = Enrollment.objects.filter(student=self.object)
+        return context
 
 
 class CourseView(LoginRequiredMixin, ListView):
