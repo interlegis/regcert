@@ -42,6 +42,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'widget_tweaks',
     'core',
+
+    # Dev
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
