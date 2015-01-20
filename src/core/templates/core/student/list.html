@@ -44,6 +44,38 @@
         {% endfor %}
     </tbody>
 </table>
+    {% if is_paginated %}
+    <nav>
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li>
+          <a href="{% url 'students' %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
+        {% for p in page_obj.paginator.page_range %}
+        {% if p == page_obj.number %}
+            <li class="active">
+                <a href="{% url 'students' %}?page={{ p }}">{{ p }} <span class="sr-only">(current)</span></a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'students' %}?page={{ p }}">{{ p }}</a></li>
+        {% endif %}
+
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li>
+          <a href="{% url 'students' %}?page={{ page_obj.next_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% endif %}
 {% endif %}
 {% endblock %}
 

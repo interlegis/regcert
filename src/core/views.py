@@ -24,6 +24,7 @@ def home(request):
 class StudentView(LoginRequiredMixin, ListView):
     model = Student
     context_object_name = 'students'
+    paginate_by = 10
     template_name = 'core/student/list.html'
 
 
