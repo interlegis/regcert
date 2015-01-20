@@ -1,34 +1,48 @@
 from uuid import uuid4
 
 from django.db import models
+from django.utils.translation import ugettext as _
 
 from baco import Baco, base16
 
 
 class Student(models.Model):
-    name = models.CharField(max_length=40)
-    birthday = models.DateField()
-    nationality = models.CharField(max_length=40)
-    rg = models.CharField(max_length=15)
+    name = models.CharField(max_length=40, verbose_name=_('name'))
+    birthday = models.DateField(verbose_name=_('birthday'))
+    nationality = models.CharField(max_length=40,
+                                   verbose_name=_('nationality'))
+    rg = models.CharField(max_length=15, verbose_name=_('rg'))
     registration_date_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('Student')
+        verbose_name_plural = _('Students')
 
     def __str__(self):
         return self.name
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=40)
-    hours = models.IntegerField()
-    start_date = models.DateField()
-    end_date = models.DateField()
+    name = models.CharField(max_length=40, verbose_name=_('name'))
+    duration = models.IntegerField(verbose_name=_('duration'))
+    start_date = models.DateField(verbose_name=_('start date'))
+    end_date = models.DateField(verbose_name=_('end date'))
+
+    class Meta:
+        verbose_name = _('Student')
+        verbose_name_plural = _('Students')
 
     def __str__(self):
         return self.name
 
 
 class Enrollment(models.Model):
-    student = models.ForeignKey(Student)
-    course = models.ForeignKey(Course)
+    student = models.ForeignKey(Student, verbose_name=_('student'))
+    course = models.ForeignKey(Course, verbose_name=_('course'))
+
+    class Meta:
+        verbose_name = _('Enrollment')
+        verbose_name_plural = _('Enrollments')
 
     def __str__(self):
         return '{}# {} - {}'.format(self.id, self.course.name,
@@ -36,9 +50,14 @@ class Enrollment(models.Model):
 
 
 class Certificate(models.Model):
-    enrollment = models.ForeignKey(Enrollment)
-    verification_code = models.CharField(max_length=32, unique=True)
-    date_time = models.DateTimeField()
+    enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'))
+    verification_code = models.CharField(max_length=32, unique=True,
+                                         verbose_name=_('verification code'))
+    date_time = models.DateTimeField(verbose_name=_('date/time'))
+
+    class Meta:
+        verbose_name = _('Certificate')
+        verbose_name_plural = _('Certificates')
 
     def save(self, *args, **kwargs):
         uuid = uuid4()
