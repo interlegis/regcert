@@ -173,7 +173,23 @@ class CertificateView(LoginRequiredMixin, ListView):
 class CertificateCreate(LoginRequiredMixin, CreateView):
     model = Certificate
     fields = ['enrollment']
-    template_name = 'core/certificate/form.html'
+    template_name = 'core/certificate/create.html'
+    success_url = '/certificados'
+
+class CertificateDetail(ListView):
+    context_object_name = 'certificate'
+    template_name = 'core/certificate/detail.html'
+
+    def get_queryset(self):
+        certificate = get_object_or_404(Certificate, id=self.kwargs['pk'])
+        return certificate
+
+
+
+class CertificateInvalidate(LoginRequiredMixin, UpdateView):
+    model = Certificate
+    fields = ['reason']
+    template_name = 'core/certificate/invalidate.html'
     success_url = '/certificados'
 
 

@@ -3,7 +3,7 @@ from uuid import uuid4
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from audit_log.models.fields import CreatingUserField
+from audit_log.models.fields import CreatingUserField, LastUserField
 from baco import Baco, base16
 
 
@@ -56,6 +56,10 @@ class Certificate(models.Model):
                                          verbose_name=_('verification code'))
     created_by = CreatingUserField(related_name = "created_certificate")
     date_time = models.DateTimeField(auto_now_add=True)
+    invalidate = models.BooleanField(default=False)
+    invalidate_by = LastUserField()
+    invalidate_reason = models.TextField(blank=True)
+
 
     class Meta:
         verbose_name = _('Certificate')
