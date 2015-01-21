@@ -172,13 +172,7 @@ class CertificateView(LoginRequiredMixin, ListView):
 
 class CertificateCreate(LoginRequiredMixin, CreateView):
     model = Certificate
-    fields = ['enrollment', 'date_time']
-    template_name = 'core/certificate/form.html'
-    success_url = '/certificados'
-
-
-class CertificateUpdate(LoginRequiredMixin, UpdateView):
-    model = Certificate
+    fields = ['enrollment']
     template_name = 'core/certificate/form.html'
     success_url = '/certificados'
 
