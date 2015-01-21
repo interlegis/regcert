@@ -3,6 +3,7 @@ from uuid import uuid4
 from django.db import models
 from django.utils.translation import ugettext as _
 
+from audit_log.models.fields import CreatingUserField
 from baco import Baco, base16
 
 
@@ -53,7 +54,8 @@ class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'))
     verification_code = models.CharField(max_length=32, unique=True,
                                          verbose_name=_('verification code'))
-    date_time = models.DateTimeField(verbose_name=_('date/time'))
+    created_by = CreatingUserField(related_name = "created_certificate")
+    date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = _('Certificate')

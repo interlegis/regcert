@@ -15,9 +15,10 @@
     <thead>
         <tr>
             <th>{% trans 'Validation code' %}</th>
-            <th>{% trans 'Enroll' %}</th>
             <th>{% trans 'Course' %}</th>
+            <th>{% trans 'Student' %}</th>
             <th>{% trans 'Date/Time' %}</th>
+            <th>{% trans 'Created by' %}</th>
             <th>{% trans 'Options' %}</th>
         </tr>
     </thead>
@@ -28,15 +29,9 @@
             <td>{{ certificate.enrollment.course.name }}</td>
             <td>{{ certificate.enrollment.student.name }}</td>
             <td>{{ certificate.date_time }}</td>
+            <td>{{ certificate.created_by }}</td>
             <td>
                 <div class="btn-group" role="group">
-
-                    <a class="btn btn-default btn-sm" href="{% url 'certificate_update' certificate.id %}">
-                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                    </a>
-                    <a class="btn btn-default btn-sm" href="{% url 'certificate_update' certificate.id %}">
-                      <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </a>
                     <a class="btn btn-default btn-sm" href="{% url 'certificate_delete' certificate.id %}">
                       <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
