@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
 {% load i18n %}
 {% load widget_tweaks %}
 
@@ -26,3 +27,24 @@
 </form>
 {% endif %}
 {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'bootstrap-3-datepicker/css/datepicker3.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+
+<script>
+$('.date input').datepicker({
+    format: "dd/mm/yyyy",
+    todayBtn: "linked",
+    language: "pt-BR",
+    autoclose: true,
+    todayHighlight: true
+});
+</script>
+{% endblock %}
+
+

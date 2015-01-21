@@ -29,7 +29,7 @@
     <div class="form-group">
     {% endif %}
         <label for="{{ student_form.birthday.id_for_label }}" class="col-sm-2 control-label">{{ student_form.birthday.label }}</label>
-        <div class="col-sm-10">
+        <div class="col-sm-10 date">
             {{ student_form.birthday | add_class:"form-control" }}
         </div>
     </div>

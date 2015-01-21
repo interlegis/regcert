@@ -9,6 +9,9 @@
     <title>regcert</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
 
+    {% block css %}
+    {% endblock %}
+
     <style>
         .footer {
             position: absolute;
@@ -17,9 +20,7 @@
             height: 60px;
             background-color: #e7e7e7;
         }
-        .container {
-            max-width: 800px;
-        }
+
         .checkbox ul {
             list-style-type: none;
             padding-left: 0;
@@ -81,7 +82,12 @@
 
     </div>
 
+
+
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
 </body>
 </html>
