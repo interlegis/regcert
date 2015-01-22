@@ -49,10 +49,10 @@
     {% else %}
     <div class="form-group">
     {% endif %}
-        <label for="{{ form.start_date.id_for_label }}" class="col-sm-2 control-label">{{ form.start_date.label }}</label>
-        <div class="col-sm-10">
-            {{ form.start_date | add_class:"form-control" }}
-        </div>
+            <label for="{{ form.start_date.id_for_label }}" class="col-sm-2 control-label">{{ form.start_date.label }}</label>
+            <div class="col-sm-10 date">
+                {{ form.start_date | add_class:"form-control" }}
+            </div>
     </div>
 
     {% if form.end_date.errors %}

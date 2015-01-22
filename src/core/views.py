@@ -2,10 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, View
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, FormView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 
-from core.forms import StudentForm, StudentCoursesForm
+from core.forms import InvalidateCertificateForm, StudentForm, StudentCoursesForm
 from core.models import Certificate, Course, Enrollment, Student
 
 
@@ -172,25 +172,36 @@ class CertificateView(LoginRequiredMixin, ListView):
 
 class CertificateCreate(LoginRequiredMixin, CreateView):
     model = Certificate
-    fields = ['enrollment']
+    fields = ['enrollment', 'book_number', 'book_sheet', 'book_date',
+        'book_date', 'process_number', 'executive_director',
+        'educational_secretary']
     template_name = 'core/certificate/create.html'
     success_url = '/certificados'
 
-class CertificateDetail(ListView):
+
+class CertificateDetail(LoginRequiredMixin, ListView):
     context_object_name = 'certificate'
     template_name = 'core/certificate/detail.html'
+    InvalidateCertificateForm
 
     def get_queryset(self):
         certificate = get_object_or_404(Certificate, id=self.kwargs['pk'])
         return certificate
 
 
-
-class CertificateInvalidate(LoginRequiredMixin, UpdateView):
-    model = Certificate
-    fields = ['reason']
+class CertificateInvalidate(LoginRequiredMixin, FormView):
+    form_class = InvalidateCertificateForm
     template_name = 'core/certificate/invalidate.html'
     success_url = '/certificados'
+
+    def form_valid(self, form):
+        certificate = get_object_or_404(Certificate, id=self.kwargs['pk'])
+        certificate.invalidated = True
+        certificate.invalidated_reason = self.request.POST['reason']
+        certificate.save()
+        print(certificate)
+
+        return super(CertificateInvalidate, self).form_valid(form)
 
 
 class CertificateDelete(LoginRequiredMixin, DeleteView):
@@ -198,3 +209,5 @@ class CertificateDelete(LoginRequiredMixin, DeleteView):
     context_object_name = 'certificate'
     template_name = 'core/certificate/confirm_delete.html'
     success_url = '/certificados'
+
+

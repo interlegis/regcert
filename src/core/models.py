@@ -29,6 +29,7 @@ class Course(models.Model):
     start_date = models.DateField(verbose_name=_('start date'))
     end_date = models.DateField(verbose_name=_('end date'))
 
+
     class Meta:
         verbose_name = _('Student')
         verbose_name_plural = _('Students')
@@ -51,14 +52,27 @@ class Enrollment(models.Model):
 
 
 class Certificate(models.Model):
-    enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'))
+    enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'),
+                                   unique=True)
     verification_code = models.CharField(max_length=32, unique=True,
                                          verbose_name=_('verification code'))
+
+    book_number = models.IntegerField(verbose_name=_('book number'))
+    book_sheet = models.IntegerField(verbose_name=_('book sheet'))
+    book_date = models.DateField(verbose_name=_('book date'))
+    process_number = models.IntegerField(verbose_name=_('process number'))
+    executive_director = models.CharField(max_length=40,
+        verbose_name=_('executive director'))
+    educational_secretary = models.CharField(max_length=40,
+        verbose_name=_('educational secretary'))
+    # ato de credenciamento
+
     created_by = CreatingUserField(related_name = "created_certificate")
     date_time = models.DateTimeField(auto_now_add=True)
-    invalidate = models.BooleanField(default=False)
-    invalidate_by = LastUserField()
-    invalidate_reason = models.TextField(blank=True)
+
+    invalidated = models.BooleanField(default=False)
+    invalidated_by = LastUserField()
+    invalidated_reason = models.TextField(blank=True)
 
 
     class Meta:

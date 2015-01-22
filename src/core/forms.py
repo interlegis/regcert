@@ -17,3 +17,6 @@ class StudentCoursesForm(forms.Form):
         required=False,
         label=_('courses')
     )
+
+class InvalidateCertificateForm(forms.Form):
+    reason = forms.CharField(widget = forms.Textarea)
