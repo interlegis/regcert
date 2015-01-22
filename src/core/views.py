@@ -211,3 +211,15 @@ class CertificateDelete(LoginRequiredMixin, DeleteView):
     success_url = '/certificados'
 
 
+class CertificateValidate(LoginRequiredMixin, View):
+
+    def get(self, request, validation_code):
+        try:
+            certificate = Certificate.objects.get(
+                validation_code__startswith=validation_code)
+            context = {'certificate': certificate}
+        except Certificate.DoesNotExist:
+            context = {'validation_code': validation_code}
+
+
+        return render(request, 'core/certificate/validate.html', context)

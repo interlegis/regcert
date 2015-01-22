@@ -54,7 +54,7 @@ class Enrollment(models.Model):
 class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'),
                                    unique=True)
-    verification_code = models.CharField(max_length=32, unique=True,
+    validation_code = models.CharField(max_length=32, unique=True,
                                          verbose_name=_('verification code'))
 
     book_number = models.IntegerField(verbose_name=_('book number'))
@@ -81,5 +81,5 @@ class Certificate(models.Model):
 
     def save(self, *args, **kwargs):
         uuid = uuid4()
-        self.verification_code = Baco.to_62(uuid.hex, base16)
+        self.validation_code = Baco.to_62(uuid.hex, base16)
         super(Certificate, self).save(*args, **kwargs)
