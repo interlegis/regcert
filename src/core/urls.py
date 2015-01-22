@@ -3,7 +3,8 @@ from core.views import (StudentCreate, StudentView, StudentUpdate,
                         StudentDelete, CourseView, CourseCreate, CourseUpdate,
                         CourseDelete, CertificateView, CertificateCreate,
                         CertificateInvalidate, CertificateDelete,
-                        CertificateDetail, CertificateValidate)
+                        CertificateDetail, CertificateValidate,
+                        CertificateSearch)
 
 
 urlpatterns = patterns(
@@ -26,6 +27,8 @@ urlpatterns = patterns(
         name='certificate_create'),
     url(r'^certificados/validar/(?P<validation_code>[\w-]+)$',
         CertificateValidate.as_view(), name='certificate_validate'),
+    url(r'^certificados/buscar$', CertificateSearch.as_view(),
+        name='certificate_search'),
     url(r'^certificados/detalhes/(?P<pk>[\w-]+)$', CertificateDetail.as_view(),
         name='certificate_detail'),
     url(r'^certificados/invalidar/(?P<pk>[\w-]+)$',

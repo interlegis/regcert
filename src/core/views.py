@@ -2,10 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, View
-from django.views.generic.edit import CreateView, FormView, UpdateView, DeleteView
+from django.views.generic.edit import (CreateView, FormView, UpdateView,
+                                      DeleteView)
 from django.utils.decorators import method_decorator
 
-from core.forms import InvalidateCertificateForm, StudentForm, StudentCoursesForm
+from core.forms import (InvalidateCertificateForm, StudentForm,
+                       StudentCoursesForm, SearchCertificateForm)
 from core.models import Certificate, Course, Enrollment, Student
 
 
@@ -211,7 +213,7 @@ class CertificateDelete(LoginRequiredMixin, DeleteView):
     success_url = '/certificados'
 
 
-class CertificateValidate(LoginRequiredMixin, View):
+class CertificateValidate(View):
 
     def get(self, request, validation_code):
         try:
@@ -221,5 +223,25 @@ class CertificateValidate(LoginRequiredMixin, View):
         except Certificate.DoesNotExist:
             context = {'validation_code': validation_code}
 
-
         return render(request, 'core/certificate/validate.html', context)
+
+
+class CertificateSearch(LoginRequiredMixin, View):
+
+    def get(self, request):
+
+        form = SearchCertificateForm(request.GET)
+
+        context = {}
+        context['form'] = form
+
+        if form.is_valid():
+            data  = form.cleaned_data
+            if data['search_options'] == 'name':
+                context['by_name'] = Certificate.objects.filter(
+                    enrollment__student__name=data['search_text'])
+            else:
+                context['by_validation_code'] = Certificate.objects.filter(
+                    validation_code__startswith=data['search_text'])
+
+        return render(request, 'core/certificate/search.html', context)
