@@ -6,8 +6,8 @@ from django.views.generic.edit import (CreateView, FormView, UpdateView,
                                       DeleteView)
 from django.utils.decorators import method_decorator
 
-from core.forms import (InvalidateCertificateForm, StudentForm,
-                       StudentCoursesForm, SearchCertificateForm)
+from core.forms import (InvalidateCertificateForm, ValidateCertificateForm,
+                       StudentCoursesForm, SearchCertificateForm, StudentForm)
 from core.models import Certificate, Course, Enrollment, Student
 
 
@@ -18,9 +18,21 @@ class LoginRequiredMixin(object):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 
-@login_required
-def home(request):
-    return render(request, 'core/home.html')
+class Home(View):
+
+    def get(self, request):
+        return render(request, 'core/home.html',
+            {'form': ValidateCertificateForm})
+
+    def post(self, request):
+        form = ValidateCertificateForm(request.POST)
+        if form.is_valid():
+            validation_code = form.cleaned_data['validation_code']
+
+            return HttpResponseRedirect('/certificados/validar/{}'.format(
+                validation_code))
+        else:
+            return render(request, 'core/home.html', {'form': form})
 
 
 class StudentView(LoginRequiredMixin, ListView):
@@ -45,7 +57,7 @@ class StudentCreate(View):
     def post(self, request):
         student_form = StudentForm(request.POST, prefix='student')
         courses_form = StudentCoursesForm(request.POST,
-                                                  prefix='courses')
+                                          prefix='courses')
 
         if student_form.is_valid() and courses_form.is_valid():
             student = student_form.save()
@@ -196,6 +208,13 @@ class CertificateInvalidate(LoginRequiredMixin, FormView):
     template_name = 'core/certificate/invalidate.html'
     success_url = '/certificados'
 
+
+    def get_context_data(self, **kwargs):
+        context = super(CertificateInvalidate, self).get_context_data(**kwargs)
+        context['certificate'] = Certificate.objects.get(id=self.kwargs['pk'])
+        return context
+
+
     def form_valid(self, form):
         certificate = get_object_or_404(Certificate, id=self.kwargs['pk'])
         certificate.invalidated = True
@@ -240,8 +259,13 @@ class CertificateSearch(LoginRequiredMixin, View):
             if data['search_options'] == 'name':
                 context['by_name'] = Certificate.objects.filter(
                     enrollment__student__name=data['search_text'])
+                if not len(context['by_name']):
+                    context['invalid'] = True
             else:
                 context['by_validation_code'] = Certificate.objects.filter(
                     validation_code__startswith=data['search_text'])
+                if not len(context['by_validation_code']):
+                    context['invalid'] = True
+
 
         return render(request, 'core/certificate/search.html', context)

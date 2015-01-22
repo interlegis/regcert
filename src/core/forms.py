@@ -20,7 +20,7 @@ class StudentCoursesForm(forms.Form):
 
 
 class InvalidateCertificateForm(forms.Form):
-    reason = forms.CharField(widget=forms.Textarea)
+    reason = forms.CharField(widget=forms.Textarea, label=_('Reason'))
 
 
 class SearchCertificateForm(forms.Form):
@@ -33,3 +33,7 @@ class SearchCertificateForm(forms.Form):
     search_options = forms.ChoiceField(widget=forms.RadioSelect,
                                        choices=options)
     search_text = forms.CharField(max_length=40)
+
+
+class ValidateCertificateForm(forms.Form):
+    validation_code = forms.CharField(max_length=5, label=_('validation code'))

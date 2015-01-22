@@ -30,7 +30,7 @@
         {% else %}
         <tr>
         {% endif %}
-            <td>{{ certificate.validation_code }}</td>
+            <td>{{ certificate.validation_code | slice:':5' }}</td>
             <td>{{ certificate.enrollment.course.name }}</td>
             <td>{{ certificate.enrollment.student.name }}</td>
             <td>{{ certificate.date_time }}</td>

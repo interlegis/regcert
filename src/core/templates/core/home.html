@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% block content %}
-<div class="row">
-    <div class="col-md-12 rc-validation">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Códigio de conferência">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Validar certificado</button>
-            </span>
-        </div><!-- /input-group -->
-        <p class="rc-help-text">Dolor error corrupti natus facere laboriosam sed facilis tempore accusamus inventore non? Excepturi reprehenderit ipsam numquam maiores veniam.</p>
-    </div>
+<div class="page-header">
+    <h1>{% trans 'Validate certificate' %}</h1>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <a class="btn btn-default" href="#" role="button">Registrar certificado</a>
-            <a class="btn btn-default" href="#" role="button">Consultar certificados</a>
-            <a class="btn btn-default" href="#" role="button">Anular registro</a>
-            <a class="btn btn-default" href="#" role="button">Relatórios</a>
-          </div>
+    <div class="col-sm-12">
+<p>Para validar um certificado, digite o código de validação no campo abaixo:</p>
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.validation_code | add_class:'form-control' }}
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Validar certificado</button>
+                </span>
+            </div><!-- /input-group -->
+        </form>
     </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste est esse assumenda perspiciatis quo repellat enim consequuntur officia praesentium laboriosam reiciendis aperiam nostrum distinctio architecto voluptatem necessitatibus, tempora, quia ducimus?</p></div>
+    <div class="col-sm-4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet impedit sequi unde, suscipit eligendi consequatur facere, iste iusto harum. Sapiente voluptatem corporis doloremque, modi recusandae provident, asperiores ducimus quae culpa!</p></div>
+    <div class="col-sm-4"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium alias laboriosam illum reiciendis est pariatur deserunt, aut modi ab repudiandae, ratione cum obcaecati ducimus quis, porro natus eveniet voluptas provident.</p></div>
 </div>
 {% endblock %}

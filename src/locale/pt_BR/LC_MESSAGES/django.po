@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 16:51+0000\n"
+"POT-Creation-Date: 2015-01-22 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,12 @@ msgstr ""
 msgid "courses"
 msgstr "cursos"
 
+#: core/forms.py:23 core/templates/core/certificate/detail.html:47
+msgid "Reason"
+msgstr "Motivo"
+
 #: core/forms.py:29 core/templates/core/certificate/detail.html:22
+#: core/templates/core/certificate/invalidate.html:15
 #: core/templates/core/certificate/list.html:17
 #: core/templates/core/certificate/search.html:47
 #: core/templates/core/certificate/search.html:98
@@ -33,6 +38,10 @@ msgstr "Código de validação"
 #: core/templates/core/student/list.html:18
 msgid "Name"
 msgstr "Nome"
+
+#: core/forms.py:39
+msgid "validation code"
+msgstr "Código de validação"
 
 #: core/models.py:11 core/models.py:27
 msgid "name"
@@ -51,6 +60,7 @@ msgid "rg"
 msgstr ""
 
 #: core/models.py:19 core/models.py:34
+#: core/templates/core/certificate/detail.html:61
 #: core/templates/core/certificate/detail.html:62
 #: core/templates/core/certificate/list.html:19
 #: core/templates/core/certificate/search.html:49
@@ -59,7 +69,7 @@ msgid "Student"
 msgstr "Estudante"
 
 #: core/models.py:20 core/models.py:35 core/templates/core/student/list.html:7
-#: templates/base.html:70
+#: templates/base.html:71
 msgid "Students"
 msgstr "Estudantes"
 
@@ -123,20 +133,23 @@ msgstr "Diretor(a) executivo(a)"
 msgid "educational secretary"
 msgstr "Secretário(a) escolar"
 
-#: core/models.py:79
+#: core/models.py:79 core/templates/core/certificate/detail.html:21
+#: core/templates/core/certificate/invalidate.html:14
 msgid "Certificate"
 msgstr "Certificado"
 
 #: core/models.py:80 core/templates/core/certificate/list.html:7
-#: templates/base.html:68
+#: templates/base.html:69
 msgid "Certificates"
 msgstr "Certificados"
 
 #: core/templates/core/certificate/confirm_delete.html:9
-#: core/templates/core/student/confirm_delete.html:9
-#, python-format
-msgid "Are you sure you want to delete the student %(student)s?"
-msgstr "Você tem certeza que deseja deletar o estudante %(student)s"
+msgid "Are you sure you want to delete the certificate from "
+msgstr "Você tem certeza que deseja deletar o certificado do aluno"
+
+#: core/templates/core/certificate/confirm_delete.html:9
+msgid "in the course"
+msgstr "no curso"
 
 #: core/templates/core/certificate/confirm_delete.html:11
 #: core/templates/core/course/confirm_delete.html:19
@@ -145,18 +158,20 @@ msgid "Confirm"
 msgstr "Confirmar"
 
 #: core/templates/core/certificate/confirm_delete.html:12
-#: core/templates/core/certificate/create.html:36
-#: core/templates/core/certificate/invalidate.html:33
+#: core/templates/core/certificate/create.html:41
+#: core/templates/core/certificate/create.html:42
+#: core/templates/core/certificate/invalidate.html:57
+#: core/templates/core/certificate/invalidate.html:58
 #: core/templates/core/course/confirm_delete.html:20
 #: core/templates/core/course/form.html:75
 #: core/templates/core/student/confirm_delete.html:20
 #: core/templates/core/student/create.html:23
 #: core/templates/core/student/edit.html:23
+#: core/templates/core/student/edit.html:24
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: core/templates/core/certificate/create.html:35
-#: core/templates/core/certificate/invalidate.html:32
+#: core/templates/core/certificate/create.html:40
 #: core/templates/core/certificate/list.html:7
 msgid "Add new certificate"
 msgstr "Adicionar novo certificado"
@@ -174,32 +189,39 @@ msgid "delete"
 msgstr "deletar"
 
 #: core/templates/core/certificate/detail.html:24
+#: core/templates/core/certificate/invalidate.html:17
 #, fuzzy
 #| msgid "Date/Time"
 msgid "Date"
 msgstr "Data/Hora"
 
 #: core/templates/core/certificate/detail.html:26
+#: core/templates/core/certificate/invalidate.html:19
 msgid "Book number"
 msgstr "Número do livro"
 
 #: core/templates/core/certificate/detail.html:28
+#: core/templates/core/certificate/invalidate.html:21
 msgid "Book sheet"
 msgstr "Página do livro"
 
 #: core/templates/core/certificate/detail.html:30
+#: core/templates/core/certificate/invalidate.html:23
 msgid "Book date"
 msgstr "Data de registro no livro"
 
 #: core/templates/core/certificate/detail.html:32
+#: core/templates/core/certificate/invalidate.html:25
 msgid "Process Number"
 msgstr "Número do processo"
 
 #: core/templates/core/certificate/detail.html:34
+#: core/templates/core/certificate/invalidate.html:27
 msgid "Executive director"
 msgstr "Diretor(a) executivo(a)"
 
 #: core/templates/core/certificate/detail.html:36
+#: core/templates/core/certificate/invalidate.html:29
 msgid "Educational secretary"
 msgstr "Secretário(a) escolar"
 
@@ -232,10 +254,7 @@ msgstr "não"
 msgid "Invalidated by"
 msgstr "Invalidado por"
 
-#: core/templates/core/certificate/detail.html:47
-msgid "Reason"
-msgstr "Motivo"
-
+#: core/templates/core/certificate/detail.html:51
 #: core/templates/core/certificate/detail.html:52
 #: core/templates/core/certificate/list.html:18
 #: core/templates/core/certificate/search.html:48
@@ -244,12 +263,14 @@ msgid "Course"
 msgstr "Curso"
 
 #: core/templates/core/certificate/detail.html:54
+#: core/templates/core/course/list.html:19
 msgid "Duration"
 msgstr "Duração"
 
 #: core/templates/core/certificate/detail.html:55
+#: core/templates/core/course/form.html:38
 msgid "hours"
-msgstr "duração"
+msgstr "horas"
 
 #: core/templates/core/certificate/detail.html:56
 #: core/templates/core/course/list.html:20
@@ -275,6 +296,11 @@ msgstr "Nacionalidade"
 #: core/templates/core/student/list.html:21
 msgid "RG"
 msgstr "RG"
+
+#: core/templates/core/certificate/invalidate.html:7
+#: core/templates/core/certificate/invalidate.html:56
+msgid "Invalidate certificate"
+msgstr "Invalidar certificado"
 
 #: core/templates/core/certificate/list.html:7
 #: core/templates/core/certificate/search.html:7
@@ -302,13 +328,12 @@ msgid "Options"
 msgstr "Opções"
 
 #: core/templates/core/certificate/search.html:11
-#| msgid "Search certificates"
 msgid "Search certificates by:"
 msgstr "Buscar certificados por:"
 
 #: core/templates/core/certificate/search.html:37
 msgid "Search"
-msgstr "Busca"
+msgstr "Buscar"
 
 #: core/templates/core/certificate/validate.html:9
 msgid "Certificate valid"
@@ -323,18 +348,27 @@ msgstr "Certificado não encontrado"
 msgid "Are you sure you want to delete the course <b>%(course)s</b>?"
 msgstr "Você tem certeza que deseja deletar o curso <b>%(course)s</b>?"
 
+#: core/templates/core/course/confirm_delete.html:11
+msgid "The following enrollments will be deleted:"
+msgstr "As seguintes matrículas serão deletadas:"
+
 #: core/templates/core/course/form.html:74
 #: core/templates/core/course/list.html:7
 msgid "Add new course"
 msgstr "Adicionar novo curso"
 
-#: core/templates/core/course/list.html:7 templates/base.html:69
+#: core/templates/core/course/list.html:7 templates/base.html:70
 msgid "Courses"
 msgstr "Cursos"
 
-#: core/templates/core/course/list.html:19
-msgid "Hours"
-msgstr "Duração"
+#: core/templates/core/home.html:6
+msgid "Validate certificate"
+msgstr "Validar certificado"
+
+#: core/templates/core/student/confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete the student %(student)s?"
+msgstr "Você tem certeza que deseja deletar o estudante %(student)s"
 
 #: core/templates/core/student/create.html:22
 #: core/templates/core/student/list.html:7
@@ -345,13 +379,24 @@ msgstr "Adicionar novo estudante"
 msgid "Edit student"
 msgstr "Adicionar novo estudante"
 
-#: templates/base.html:71
+#: templates/base.html:68
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:72
 msgid "Reports"
 msgstr "Relatórios"
 
-#: templates/base.html:74
+#: templates/base.html:75
 msgid "Logout"
 msgstr "Sair"
+
+#: templates/base.html:79
+msgid "Login"
+msgstr "Acessar"
+
+#~ msgid "Hours"
+#~ msgstr "Horas"
 
 #~| msgid "Validation code"
 #~ msgid "Validation Code"

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{% trans 'Invalidate certificate' %}</h1>
+</div>
+<div class="alert alert-warning" role="alert">
+    <b>Cuidado!</b> Você está prestes a invalidar um certificado. Este processo é irreversível.
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>{% trans 'Certificate' %}</h2>
+        <dt>{% trans 'Validation code' %}</dt>
+        <dd>{{ certificate.validation_code | slice:':5' }}</dd>
+        <dt>{% trans 'Date' %}</dt>
+        <dd>{{ certificate.date_time }}</dd>
+        <dt>{% trans 'Book number' %}</dt>
+        <dd>{{ certificate.book_number }}</dd>
+        <dt>{% trans 'Book sheet' %}</dt>
+        <dd>{{ certificate.book_sheet }}</dd>
+        <dt>{% trans 'Book date' %}</dt>
+        <dd>{{ certificate.book_date }}</dd>
+        <dt>{% trans 'Process Number' %}</dt>
+        <dd>{{ certificate.process_number }}</dd>
+        <dt>{% trans 'Executive director' %}</dt>
+        <dd>{{ certificate.executive_director }}</dd>
+        <dt>{% trans 'Educational secretary' %}</dt>
+        <dd>{{ certificate.educational_secretary }}</dd>
+    </div>
+    <div class="col-md-8">
+        <form method="post">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+
+            {% if form.reason.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.reason.errors }}
+            </div>
+            <div class="form-group has-error">
+            {% else %}
+            <div class="form-group">
+            {% endif %}
+                <label for="{{ form.reason.id_for_label }}">{{ form.reason.label }}</label>
+                {{ form.reason | add_class:"form-control" }}
+            </div>
+
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-danger">{% trans 'Invalidate certificate' %}</button>
+                                    <a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
+<a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

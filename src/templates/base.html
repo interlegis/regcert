@@ -55,16 +55,17 @@
             <p class="lead rc-lead">Sistema de Registro de Certificados</p>
         </div>
     </div>
-    {% if user.is_active %}
+
     <div class="container">
         <nav class="navbar navbar-default">
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse center-block" id="bs-example-navbar-collapse-1">
-
+                {% if user.is_active %}
                 <ul class="nav navbar-nav">
 
 
+                    <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
                     <li><a href="{% url 'certificates' %}">{% trans 'Certificates' %}</a></li>
                     <li><a href="{% url 'courses' %}">{% trans 'Courses' %}</a></li>
                     <li><a href="{% url 'students' %}">{% trans 'Students' %}</a></li>
@@ -73,10 +74,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
                 </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
+                </ul>
+                {% endif %}
             </div>
         </nav>
     </div>
-    {% endif %}
+
     <div class="container">
 
     {% block content %}

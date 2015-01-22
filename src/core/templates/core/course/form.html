@@ -35,7 +35,7 @@
     {% else %}
     <div class="form-group">
     {% endif %}
-        <label for="{{ form.duration.id_for_label }}" class="col-sm-2 control-label">{{ form.duration.label }}</label>
+        <label for="{{ form.duration.id_for_label }}" class="col-sm-2 control-label">{{ form.duration.label }} ({% trans 'hours' %})</label>
         <div class="col-sm-10">
             {{ form.duration | add_class:"form-control" }}
         </div>
@@ -72,7 +72,7 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="btn-group" role="group">
                 <button type="submit" class="btn btn-primary">{% trans 'Add new course' %}</button>
-                <button class="btn btn-default" onclick="history.back(-1)">{% trans 'Cancel' %}</button>
+                                <a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
             </div>
         </div>
     </div>
