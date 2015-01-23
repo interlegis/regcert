@@ -21,6 +21,16 @@
             background-color: #e7e7e7;
         }
 
+        body {
+            margin-top: 2em;
+        }
+
+        .container-fluid {
+            margin: 0 4em;
+        }
+
+
+
         .checkbox ul {
             list-style-type: none;
             padding-left: 0;
@@ -30,12 +40,30 @@
             height: 50px;
             border-left: 1px solid #eee;
         }
+
+        .rc-brand {
+            font-size: 4em;
+        }
+
+        .rc-nav {
+            padding-top: 1em;
+            border-top: 1px solid #eee;
+        }
+
+        .rc-nav > li > a:hover,
+        .rc-nav > li > a:focus {
+            background-color: #fff;
+        }
+
         .rc-page-header {
             border-bottom: 0;
         }
-        .rc-lead {
-            margin-bottom: 0;
+
+        .rc-content {
+            margin-top: 20px;
+            padding-left: 4em;
         }
+
         .rc-validation {
             margin-bottom: 20px;
         }
@@ -49,50 +77,31 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="page-header rc-page-header">
-            <h1><a href="{% url 'home' %}">regcert</a></h1>
-            <p class="lead rc-lead">Sistema de Registro de Certificados</p>
-        </div>
-    </div>
 
-    <div class="container">
-        <nav class="navbar navbar-default">
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse center-block" id="bs-example-navbar-collapse-1">
-                {% if user.is_active %}
-                <ul class="nav navbar-nav">
-
-
-                    <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <h1 class="rc-brand">reg<b>cert</b></h1>
+                <p class="lead">Registro de Certificados</p>
+                <ul class="nav nav-stacked rc-nav">
+                    {% if user.is_active %}
                     <li><a href="{% url 'certificates' %}">{% trans 'Certificates' %}</a></li>
                     <li><a href="{% url 'courses' %}">{% trans 'Courses' %}</a></li>
                     <li><a href="{% url 'students' %}">{% trans 'Students' %}</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
-                </ul>
-                {% else %}
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Seja bem vindo!</a>
-                </div>
-                <ul class="nav navbar-nav">
+                    {% else %}
                     <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
+                    {% endif %}
                 </ul>
-                {% endif %}
             </div>
-        </nav>
+            <div class="col-sm-10 rc-content">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-
-    {% block content %}
-    {% endblock %}
-
-    </div>
-
-
 
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
