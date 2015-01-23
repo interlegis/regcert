@@ -17,56 +17,66 @@
         </div>
     </h1>
 </div>
-<dl class="dl-horizontal">
-  <h2>{% trans 'Certificate' %}</h2>
-  <dt>{% trans 'Validation code' %}</dt>
-  <dd>{{ certificate.validation_code | slice:':5' }}</dd>
-  <dt>{% trans 'Date' %}</dt>
-  <dd>{{ certificate.date_time }}</dd>
-  <dt>{% trans 'Book number' %}</dt>
-  <dd>{{ certificate.book_number }}</dd>
-  <dt>{% trans 'Book sheet' %}</dt>
-  <dd>{{ certificate.book_sheet }}</dd>
-  <dt>{% trans 'Book date' %}</dt>
-  <dd>{{ certificate.book_date }}</dd>
-  <dt>{% trans 'Process Number' %}</dt>
-  <dd>{{ certificate.process_number }}</dd>
-  <dt>{% trans 'Executive director' %}</dt>
-  <dd>{{ certificate.executive_director }}</dd>
-  <dt>{% trans 'Educational secretary' %}</dt>
-  <dd>{{ certificate.educational_secretary }}</dd>
-  <dt>{% trans 'Created by' %}</dt>
-  <dd>{{ certificate.created_by }}</dd>
-  <dt>{% trans 'Certificate valid?' %}</dt>
-  {% if not certificate.invalidated %}
-  <dd>{% trans 'yes' %}</dd>
-  {% else %}
-  <dd>{% trans 'no' %}</dd>
-  <dt>{% trans 'Invalidated by' %}</dt>
-  <dd>{{ certificate.invalidated_by }}</dd>
-  <dt>{% trans 'Reason' %}</dt>
-  <dd>{{ certificate.invalidated_reason }}</dd>
-  {% endif %}
-  <hr>
-  <h2>{% trans 'Course' %}</h2>
-  <dt>{% trans 'Course' %}</dt>
-  <dd>{{ certificate.enrollment.course.name }}</dd>
-  <dt>{% trans 'Duration' %}</dt>
-  <dd>{{ certificate.enrollment.course.duration }} {% trans 'hours' %}</dd>
-  <dt>{% trans 'Start date' %}</dt>
-  <dd>{{ certificate.enrollment.course.start_date }}</dd>
-  <dt>{% trans 'End date' %}</dt>
-  <dd>{{ certificate.enrollment.course.end_date }}</dd>
-  <hr>
-  <h2>{% trans 'Student' %}</h2>
-  <dt>{% trans 'Student' %}</dt>
-  <dd>{{ certificate.enrollment.student.name }}</dd>
-  <dt>{% trans 'Birthday' %}</dt>
-  <dd>{{ certificate.enrollment.student.birthday }}</dd>
-  <dt>{% trans 'Nationality' %}</dt>
-  <dd>{{ certificate.enrollment.student.nationality }}</dd>
-  <dt>{% trans 'RG' %}</dt>
-  <dd>{{ certificate.enrollment.student.rg }}</dd>
-  <hr>
-</dl>
+<div class="row">
+  <div class="col-md-4">
+      <dl>
+        <h2>{% trans 'Certificate' %}</h2>
+        <dt>{% trans 'Validation code' %}</dt>
+        <dd>{{ certificate.validation_code | slice:':5' }}</dd>
+        <dt>{% trans 'Date' %}</dt>
+        <dd>{{ certificate.date_time }}</dd>
+        <dt>{% trans 'Book number' %}</dt>
+        <dd>{{ certificate.book_number }}</dd>
+        <dt>{% trans 'Book sheet' %}</dt>
+        <dd>{{ certificate.book_sheet }}</dd>
+        <dt>{% trans 'Book date' %}</dt>
+        <dd>{{ certificate.book_date }}</dd>
+        <dt>{% trans 'Process Number' %}</dt>
+        <dd>{{ certificate.process_number }}</dd>
+        <dt>{% trans 'Executive director' %}</dt>
+        <dd>{{ certificate.executive_director }}</dd>
+        <dt>{% trans 'Educational secretary' %}</dt>
+        <dd>{{ certificate.educational_secretary }}</dd>
+        <dt>{% trans 'Created by' %}</dt>
+        <dd>{{ certificate.created_by }}</dd>
+        <dt>{% trans 'Certificate valid?' %}</dt>
+        {% if not certificate.invalidated %}
+        <dd>{% trans 'yes' %}</dd>
+        {% else %}
+        <dd>{% trans 'no' %}</dd>
+        <dt>{% trans 'Invalidated by' %}</dt>
+        <dd>{{ certificate.invalidated_by }}</dd>
+        <dt>{% trans 'Reason' %}</dt>
+        <dd>{{ certificate.invalidated_reason }}</dd>
+        {% endif %}
+      </dl>
+    </div>
+    <div class="col-md-4">
+
+      <dl>
+        <h2>{% trans 'Course' %}</h2>
+        <dt>{% trans 'Course' %}</dt>
+        <dd>{{ certificate.enrollment.course.name }}</dd>
+        <dt>{% trans 'Duration' %}</dt>
+        <dd>{{ certificate.enrollment.course.duration }} {% trans 'hours' %}</dd>
+        <dt>{% trans 'Start date' %}</dt>
+        <dd>{{ certificate.enrollment.course.start_date }}</dd>
+        <dt>{% trans 'End date' %}</dt>
+        <dd>{{ certificate.enrollment.course.end_date }}</dd>
+           </div>
+    <div class="col-md-4">
+        <h2>{% trans 'Student' %}</h2>
+        <dt>{% trans 'Student' %}</dt>
+        <dd>{{ certificate.enrollment.student.name }}</dd>
+        <dt>{% trans 'Birthday' %}</dt>
+        <dd>{{ certificate.enrollment.student.birthday }}</dd>
+        <dt>{% trans 'Nationality' %}</dt>
+        <dd>{{ certificate.enrollment.student.nationality }}</dd>
+        <dt>{% trans 'RG' %}</dt>
+        <dd>{{ certificate.enrollment.student.rg }}</dd>
+
+    </dl>
+  </div>
+</div>
+
 {% endblock %}

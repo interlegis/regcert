@@ -69,13 +69,15 @@
                     <li><a href="{% url 'certificates' %}">{% trans 'Certificates' %}</a></li>
                     <li><a href="{% url 'courses' %}">{% trans 'Courses' %}</a></li>
                     <li><a href="{% url 'students' %}">{% trans 'Students' %}</a></li>
-                    <li><a href="#">{% trans 'Reports' %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
                 </ul>
                 {% else %}
-                <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Seja bem vindo!</a>
+                </div>
+                <ul class="nav navbar-nav">
                     <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
                 </ul>
                 {% endif %}

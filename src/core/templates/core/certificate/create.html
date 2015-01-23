@@ -4,6 +4,9 @@
 {% load widget_tweaks %}
 
 {% block content %}
+<div class="page-header">
+    <h2>{% trans 'Create new certificate' %}</h2>
+</div>
 <form method="post" class="form-horizontal">
     {% csrf_token %}
 
@@ -39,7 +42,6 @@
             <div class="btn-group" role="group">
                 <button type="submit" class="btn btn-primary">{% trans 'Add new certificate' %}</button>
                                 <a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
-<a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
             </div>
         </div>
     </div>
@@ -51,9 +53,9 @@
 {% endblock %}
 
 {% block js %}
-<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}"></script>
-<script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
 
+<script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}" charset="UTF-8"></script>
 <script>
 $('.date input').datepicker({
     format: "dd/mm/yyyy",

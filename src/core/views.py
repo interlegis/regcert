@@ -157,13 +157,13 @@ class CourseView(LoginRequiredMixin, ListView):
 class CourseCreate(LoginRequiredMixin, CreateView):
     model = Course
     success_url = '/cursos'
-    template_name = 'core/course/form.html'
+    template_name = 'core/course/create.html'
 
 
 class CourseUpdate(LoginRequiredMixin, UpdateView):
     model = Course
     success_url = '/cursos'
-    template_name = 'core/course/form.html'
+    template_name = 'core/course/edit.html'
 
 
 class CourseDelete(LoginRequiredMixin, DeleteView):

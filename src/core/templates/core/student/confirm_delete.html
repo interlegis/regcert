@@ -8,7 +8,7 @@
     {% csrf_token %}
     <p>{% blocktrans %}Are you sure you want to delete the student {{ student }}?{% endblocktrans %}</p>
     {% if enrollments %}
-    <p>The following enrollments will be deleted:</p>
+    <p>{% trans 'The following enrollments will be deleted:' %}</p>
     <ul>
         {% for enroll in enrollments %}
            <li><b>{{ enroll.course }}</b> - {{ enroll.student }}</li>

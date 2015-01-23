@@ -3,7 +3,11 @@
 {% load i18n %}
 {% load widget_tweaks %}
 
+
 {% block content %}
+<div class="page-header">
+    <h2>{% trans 'Add new course' %}</h2>
+</div>
 <form method="post" class="form-horizontal">
     {% csrf_token %}
 
@@ -84,8 +88,8 @@
 {% endblock %}
 
 {% block js %}
-<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}"></script>
 <script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}" charset="UTF-8"></script>
 
 <script>
 $('.date input').datepicker({

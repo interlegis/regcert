@@ -15,7 +15,7 @@ class StudentCoursesForm(forms.Form):
         queryset=Course.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
-        label=_('courses')
+        label=_('Courses')
     )
 
 

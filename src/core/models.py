@@ -80,6 +80,7 @@ class Certificate(models.Model):
         verbose_name_plural = _('Certificates')
 
     def save(self, *args, **kwargs):
-        uuid = uuid4()
-        self.validation_code = Baco.to_62(uuid.hex, base16)
+        if not self.validation_code:
+            uuid = uuid4()
+            self.validation_code = Baco.to_62(uuid.hex, base16)
         super(Certificate, self).save(*args, **kwargs)

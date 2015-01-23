@@ -2,12 +2,12 @@
 {% load i18n %}
 {% load widget_tweaks %}
 {% block content %}
-<div class="page-header">
-    <h1>{% trans 'Validate certificate' %}</h1>
-</div>
+
 <div class="row">
     <div class="col-sm-12">
-<p>Para validar um certificado, digite o código de validação no campo abaixo:</p>
+
+        <h3>{% trans 'Validate certificate' %}</h3>
+        <p>Para validar um certificado, digite o código de validação no campo abaixo:</p>
         <form method="post" class="form-horizontal">
             {% csrf_token %}
             <div class="input-group">

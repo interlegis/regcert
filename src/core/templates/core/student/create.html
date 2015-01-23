@@ -5,7 +5,9 @@
 {% load widget_tweaks %}
 
 {% block content %}
-
+<div class="page-header">
+    <h2>{% trans 'Add new student' %}</h2>
+</div>
 {% if not courses_form.courses %}
 <div class="alert alert-danger" role="alert">
     <p>To create a new student, at leat one course should be added first. Click <a href="{% url 'course_create' %}">here</a> to create a new course.</p>
@@ -33,8 +35,8 @@
 {% endblock %}
 
 {% block js %}
-<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}"></script>
 <script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}" charset="UTF-8"></script>
 
 <script>
 $('.date input').datepicker({
