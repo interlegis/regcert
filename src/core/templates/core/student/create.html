@@ -8,11 +8,6 @@
 <div class="page-header">
     <h2>{% trans 'Add new student' %}</h2>
 </div>
-{% if not courses_form.courses %}
-<div class="alert alert-danger" role="alert">
-    <p>To create a new student, at leat one course should be added first. Click <a href="{% url 'course_create' %}">here</a> to create a new course.</p>
-</div>
-{% else %}
 <form method="post" class="form-horizontal">
     {% csrf_token %}
 
@@ -27,7 +22,6 @@
         </div>
     </div>
 </form>
-{% endif %}
 {% endblock %}
 
 {% block css %}

@@ -7,7 +7,7 @@ from django.views.generic.edit import (CreateView, FormView, UpdateView,
 from django.utils.decorators import method_decorator
 
 from core.forms import (InvalidateCertificateForm, ValidateCertificateForm,
-                       StudentCoursesForm, SearchCertificateForm, StudentForm)
+                       SearchCertificateForm)
 from core.models import Certificate, Course, Enrollment, Student
 
 
@@ -42,98 +42,16 @@ class StudentView(LoginRequiredMixin, ListView):
     template_name = 'core/student/list.html'
 
 
-class StudentCreate(View):
-
-    def get(self, request):
-        student_form = StudentForm(prefix='student')
-        courses_form = StudentCoursesForm(prefix='courses')
-
-        context = {
-            'student_form': student_form,
-            'courses_form': courses_form
-        }
-        return render(request, 'core/student/create.html', context)
-
-    def post(self, request):
-        student_form = StudentForm(request.POST, prefix='student')
-        courses_form = StudentCoursesForm(request.POST,
-                                          prefix='courses')
-
-        if student_form.is_valid() and courses_form.is_valid():
-            student = student_form.save()
-            data = courses_form.clean()
-            for course in data['courses']:
-
-                c = Enrollment(
-                    student=student,
-                    course=course
-                )
-                c.save()
-            return HttpResponseRedirect('/alunos')
-        else:
-            context = {
-                'student_form': student_form,
-                'courses_form': courses_form
-            }
-        return render(request, 'core/student/create.html', context)
+class StudentCreate(LoginRequiredMixin, CreateView):
+    model = Student
+    success_url = '/alunos'
+    template_name = 'core/student/create.html'
 
 
-class StudentUpdate(View):
-
-    def get(self, request, pk):
-
-        student = Student.objects.get(id=pk)
-        student_form = StudentForm(initial={
-            'name': student.name,
-            'birthday': student.birthday,
-            'nationality': student.nationality,
-            'rg': student.rg
-        }, prefix='student')
-
-        enrollments = Enrollment.objects.filter(student=student)
-        courses_form = StudentCoursesForm(initial={
-            'courses': [e.course.id for e in enrollments]
-        }, prefix='student_courses')
-
-        context = {
-            'student_form': student_form,
-            'courses_form': courses_form
-        }
-        return render(request, 'core/student/edit.html', context)
-
-    def post(self, request, pk):
-        student = get_object_or_404(Student, pk=pk)
-
-        student_form = StudentForm(request.POST, prefix='student',
-                                   instance=student)
-        courses_form = StudentCoursesForm(request.POST,
-                                          prefix='student_courses')
-
-        if student_form.is_valid() and courses_form.is_valid():
-            student_form.save()
-
-            enrollments = Enrollment.objects.filter(student=student)
-            courses = [e.course for e in enrollments]
-            courses_form = courses_form.clean()
-
-            to_enroll = list(set(courses_form['courses']) - set(courses))
-            to_un_enroll = list(set(courses) - set(courses_form['courses']))
-
-            for course in to_enroll:
-                e = Enrollment(student=student, course=course)
-                e.save()
-
-            for course in to_un_enroll:
-                e = Enrollment.objects.get(student=student, course=course)
-                e.delete()
-
-            return HttpResponseRedirect('/alunos')
-        else:
-            context = {
-                'student_form': student_form,
-                'courses_form': courses_form
-            }
-        return render(request, 'core/student/edit.html', context)
+class StudentUpdate(LoginRequiredMixin, UpdateView):
+    model = Student
+    success_url = '/alunos'
+    template_name = 'core/student/edit.html'
 
 
 class StudentDelete(LoginRequiredMixin, DeleteView):
