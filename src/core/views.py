@@ -54,18 +54,6 @@ class StudentUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'core/student/edit.html'
 
 
-class StudentDelete(LoginRequiredMixin, DeleteView):
-    model = Student
-    context_object_name = 'student'
-    template_name = 'core/student/confirm_delete.html'
-    success_url = '/alunos'
-
-    def get_context_data(self, **kwargs):
-        context = super(StudentDelete, self).get_context_data(**kwargs)
-        context['enrollments'] = Enrollment.objects.filter(student=self.object)
-        return context
-
-
 class CourseView(LoginRequiredMixin, ListView):
     model = Course
     context_object_name = 'courses'
@@ -82,18 +70,6 @@ class CourseUpdate(LoginRequiredMixin, UpdateView):
     model = Course
     success_url = '/cursos'
     template_name = 'core/course/edit.html'
-
-
-class CourseDelete(LoginRequiredMixin, DeleteView):
-    model = Course
-    context_object_name = 'course'
-    template_name_suffix = '/confirm_delete'
-    success_url = '/cursos'
-
-    def get_context_data(self, **kwargs):
-        context = super(CourseDelete, self).get_context_data(**kwargs)
-        context['enrollments'] = Enrollment.objects.filter(course=self.object)
-        return context
 
 
 class CertificateView(LoginRequiredMixin, ListView):
@@ -141,13 +117,6 @@ class CertificateInvalidate(LoginRequiredMixin, FormView):
         print(certificate)
 
         return super(CertificateInvalidate, self).form_valid(form)
-
-
-class CertificateDelete(LoginRequiredMixin, DeleteView):
-    model = Certificate
-    context_object_name = 'certificate'
-    template_name = 'core/certificate/confirm_delete.html'
-    success_url = '/certificados'
 
 
 class CertificateValidate(View):

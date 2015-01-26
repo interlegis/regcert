@@ -33,10 +33,7 @@
             <td>
                 <div class="btn-group" role="group">
                     <a class="btn btn-default btn-sm" href="{% url 'course_update' course.id %}">
-                      <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </a>
-                    <a class="btn btn-default btn-sm" href="{% url 'course_delete' course.id %}">
-                      <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"> {% trans "Edit" %}</span>
                     </a>
                 </div>
             </td>
