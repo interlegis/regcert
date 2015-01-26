@@ -3,9 +3,12 @@
 
 {% block content %}
 
-<div class="page-header">
-    <h1>{% trans 'Courses' %} <small><a href="{% url 'course_create' %}">{% trans 'Add new course' %}</a></small></h1>
-</div>
+<nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'course_create' %}">{% trans 'Add new course' %}</a></li>
+    </ul>
+</nav>
+
 {% if not courses %}
 <div class="alert alert-warning" role="alert">
     <p><b>No courses found!</b> Click <a href="{% url 'course_create' %}">here</a> to add one.</p>
