@@ -1,13 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, View
 from django.views.generic.edit import (CreateView, FormView, UpdateView,
                                       DeleteView)
+from django.utils.translation import ugettext as _
 from django.utils.decorators import method_decorator
+from django.db import IntegrityError
 
 from core.forms import (InvalidateCertificateForm, ValidateCertificateForm,
-                       SearchCertificateForm)
+                       SearchCertificateForm, CertificateCreateForm)
 from core.models import Certificate, Course, Enrollment, Student
 
 
@@ -78,13 +80,27 @@ class CertificateView(LoginRequiredMixin, ListView):
     template_name = 'core/certificate/list.html'
 
 
-class CertificateCreate(LoginRequiredMixin, CreateView):
-    model = Certificate
-    fields = ['enrollment', 'book_number', 'book_sheet', 'book_date',
-        'book_date', 'process_number', 'executive_director',
-        'educational_secretary']
+class CertificateCreate(LoginRequiredMixin, FormView):
+    form_class = CertificateCreateForm
     template_name = 'core/certificate/create.html'
     success_url = '/certificados'
+
+    def form_valid(self, form):
+        try:
+            form.save()
+        except Student.DoesNotExist:
+            form.add_error('student', _('student does not exists.'))
+            return super(CertificateCreate, self).form_invalid(form)
+
+        except Course.DoesNotExist:
+            form.add_error('student', _('student does not exists.'))
+            return super(CertificateCreate, self).form_invalid(form)
+
+        except IntegrityError:
+            form.add_error('enrollment', _('enrollment already exists.'))
+            return super(CertificateCreate, self).form_invalid(form)
+
+        return super(CertificateCreate, self).form_valid(form)
 
 
 class CertificateDetail(LoginRequiredMixin, ListView):

@@ -41,14 +41,15 @@ class Course(models.Model):
 class Enrollment(models.Model):
     student = models.ForeignKey(Student, verbose_name=_('student'))
     course = models.ForeignKey(Course, verbose_name=_('course'))
+    enrollment = models.CharField(max_length=100, unique=True)
 
     class Meta:
+        unique_together = (('enrollment', 'student', 'course'),)
         verbose_name = _('Enrollment')
         verbose_name_plural = _('Enrollments')
 
     def __str__(self):
-        return '{}# {} - {}'.format(self.id, self.course.name,
-                                    self.student.name)
+        return '#{} {}'.format(self.enrollment, self.course.name)
 
 
 class Certificate(models.Model):
