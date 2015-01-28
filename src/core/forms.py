@@ -12,7 +12,7 @@ class InvalidateCertificateForm(forms.Form):
 class SearchCertificateForm(forms.Form):
 
     options = (
-        ('validation_code', _('Validation code')),
+        ('verification_code', _('Verification code')),
         ('name', _('Name')),
     )
 
@@ -22,19 +22,20 @@ class SearchCertificateForm(forms.Form):
 
 
 class ValidateCertificateForm(forms.Form):
-    validation_code = forms.CharField(max_length=5, label=_('validation code'))
+    verification_code = forms.CharField(max_length=22,
+        label=_('validation code'))
 
 
 class CertificateCreateForm(forms.ModelForm):
 
-    student = forms.CharField(max_length=40)
-    course = forms.CharField(max_length=40)
-    enrollment = forms.CharField(max_length=100)
+    student_rg = forms.CharField(max_length=40, label=_('Student rg'))
+    course = forms.CharField(max_length=40, label=_('Course'))
+    enrollment = forms.CharField(max_length=100, label=_('Enrollment'))
 
     class Meta:
         model = Certificate
-        fields = ['book_number', 'book_sheet', 'book_date',
-            'book_date', 'process_number', 'executive_director',
+        fields = ['certificate_number', 'book_number', 'book_sheet',
+            'book_date', 'book_date', 'process_number', 'executive_director',
             'educational_secretary']
 
     def save(self, commit=True):
@@ -43,7 +44,7 @@ class CertificateCreateForm(forms.ModelForm):
         enrollment = self.cleaned_data['enrollment']
 
         try:
-            student = Student.objects.get(name=student_name)
+            student = Student.objects.get(rg=student_rg)
         except Student.DoesNotExist as e:
             raise e
 
@@ -59,7 +60,7 @@ class CertificateCreateForm(forms.ModelForm):
         except IntegrityError as e:
             pass
 
-        if Certificate.objects.filter(enrollment__student__name=student_name,
+        if Certificate.objects.filter(enrollment__student__rg=student_rg,
             enrollment__course__name=course_name):
             raise
         instance = super(CertificateCreateForm, self).save(commit=False)

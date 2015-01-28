@@ -7,6 +7,7 @@ from audit_log.models.fields import CreatingUserField, LastUserField
 from baco import Baco, base16
 
 
+
 class Student(models.Model):
     name = models.CharField(max_length=40, verbose_name=_('name'))
     birthday = models.DateField(verbose_name=_('birthday'))
@@ -28,7 +29,6 @@ class Course(models.Model):
     duration = models.IntegerField(verbose_name=_('duration'))
     start_date = models.DateField(verbose_name=_('start date'))
     end_date = models.DateField(verbose_name=_('end date'))
-
 
     class Meta:
         verbose_name = _('Student')
@@ -55,8 +55,10 @@ class Enrollment(models.Model):
 class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'),
                                    unique=True)
-    validation_code = models.CharField(max_length=32, unique=True,
+    verification_code = models.CharField(max_length=32, unique=True,
                                          verbose_name=_('verification code'))
+    certificate_number = models.CharField(max_length=50, unique=True,
+                                         verbose_name=_('certificate number'))
 
     book_number = models.IntegerField(verbose_name=_('book number'))
     book_sheet = models.IntegerField(verbose_name=_('book sheet'))
@@ -68,20 +70,19 @@ class Certificate(models.Model):
         verbose_name=_('educational secretary'))
     # ato de credenciamento
 
-    created_by = CreatingUserField(related_name = "created_certificate")
+    created_by = CreatingUserField(related_name="created_certificate")
     date_time = models.DateTimeField(auto_now_add=True)
 
     invalidated = models.BooleanField(default=False)
     invalidated_by = LastUserField()
     invalidated_reason = models.TextField(blank=True)
 
-
     class Meta:
         verbose_name = _('Certificate')
         verbose_name_plural = _('Certificates')
 
     def save(self, *args, **kwargs):
-        if not self.validation_code:
+        if not self.verification_code:
             uuid = uuid4()
-            self.validation_code = Baco.to_62(uuid.hex, base16)
+            self.verification_code = Baco.to_62(uuid.hex, base16)
         super(Certificate, self).save(*args, **kwargs)

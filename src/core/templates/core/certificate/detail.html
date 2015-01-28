@@ -18,8 +18,8 @@
   <div class="col-md-4">
       <dl>
         <h2>{% trans 'Certificate' %}</h2>
-        <dt>{% trans 'Validation code' %}</dt>
-        <dd>{{ certificate.validation_code | slice:':5' }}</dd>
+        <dt>{% trans 'Certificate number' %}</dt>
+        <dd>{{ certificate.certificate_number }}</dd>
         <dt>{% trans 'Date' %}</dt>
         <dd>{{ certificate.date_time }}</dd>
         <dt>{% trans 'Book number' %}</dt>
@@ -34,15 +34,18 @@
         <dd>{{ certificate.executive_director }}</dd>
         <dt>{% trans 'Educational secretary' %}</dt>
         <dd>{{ certificate.educational_secretary }}</dd>
+        <hr>
+        <dt>{% trans 'Verification code' %}</dt>
+        <dd>{{ certificate.verification_code }}</dd>
         <dt>{% trans 'Created by' %}</dt>
-        <dd>{{ certificate.created_by }}</dd>
+        <dd>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</dd>
         <dt>{% trans 'Certificate valid?' %}</dt>
         {% if not certificate.invalidated %}
         <dd>{% trans 'yes' %}</dd>
         {% else %}
         <dd>{% trans 'no' %}</dd>
         <dt>{% trans 'Invalidated by' %}</dt>
-        <dd>{{ certificate.invalidated_by }}</dd>
+        <dd>{{ certificate.invalidated_by.first_name }} {{ certificate.invalidated_by.last_name }}</dd>
         <dt>{% trans 'Reason' %}</dt>
         <dd>{{ certificate.invalidated_reason }}</dd>
         {% endif %}

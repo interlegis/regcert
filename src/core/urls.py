@@ -21,7 +21,7 @@ urlpatterns = patterns(
     url(r'^certificados$', CertificateView.as_view(), name='certificates'),
     url(r'^certificados/cadastrar$', CertificateCreate.as_view(),
         name='certificate_create'),
-    url(r'^certificados/validar/(?P<validation_code>[\w-]+)$',
+    url(r'^certificados/validar/(?P<verification_code>[\w-]+)$',
         CertificateValidate.as_view(), name='certificate_validate'),
     url(r'^certificados/buscar$', CertificateSearch.as_view(),
         name='certificate_search'),

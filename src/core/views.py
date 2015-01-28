@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, View
@@ -29,10 +30,10 @@ class Home(View):
     def post(self, request):
         form = ValidateCertificateForm(request.POST)
         if form.is_valid():
-            validation_code = form.cleaned_data['validation_code']
+            verification_code = form.cleaned_data['verification_code']
 
             return HttpResponseRedirect('/certificados/validar/{}'.format(
-                validation_code))
+                verification_code))
         else:
             return render(request, 'core/home.html', {'form': form})
 
@@ -76,6 +77,7 @@ class CourseUpdate(LoginRequiredMixin, UpdateView):
 
 class CertificateView(LoginRequiredMixin, ListView):
     model = Certificate
+    queryset = Certificate.objects.filter(invalidated=False)
     context_object_name = 'certificates'
     template_name = 'core/certificate/list.html'
 
@@ -130,20 +132,19 @@ class CertificateInvalidate(LoginRequiredMixin, FormView):
         certificate.invalidated = True
         certificate.invalidated_reason = self.request.POST['reason']
         certificate.save()
-        print(certificate)
 
         return super(CertificateInvalidate, self).form_valid(form)
 
 
 class CertificateValidate(View):
 
-    def get(self, request, validation_code):
+    def get(self, request, verification_code):
         try:
             certificate = Certificate.objects.get(
-                validation_code__startswith=validation_code)
+                verification_code=verification_code)
             context = {'certificate': certificate}
         except Certificate.DoesNotExist:
-            context = {'validation_code': validation_code}
+            context = {'verification_code': verification_code}
 
         return render(request, 'core/certificate/validate.html', context)
 
@@ -165,9 +166,9 @@ class CertificateSearch(LoginRequiredMixin, View):
                 if not len(context['by_name']):
                     context['invalid'] = True
             else:
-                context['by_validation_code'] = Certificate.objects.filter(
-                    validation_code__startswith=data['search_text'])
-                if not len(context['by_validation_code']):
+                context['by_verification_code'] = Certificate.objects.filter(
+                    verification_code__startswith=data['search_text'])
+                if not len(context['by_verification_code']):
                     context['invalid'] = True
 
 
