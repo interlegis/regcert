@@ -9,11 +9,10 @@ from baco import Baco, base16
 
 
 class Student(models.Model):
-    name = models.CharField(max_length=40, verbose_name=_('name'))
-    birthday = models.DateField(verbose_name=_('birthday'))
-    nationality = models.CharField(max_length=40,
-                                   verbose_name=_('nationality'))
-    rg = models.CharField(max_length=15, verbose_name=_('rg'))
+    name = models.CharField(_('name'), max_length=40)
+    birthday = models.DateField(_('birthday'))
+    nationality = models.CharField(_('nationality'), max_length=40)
+    rg = models.CharField(_('rg'), max_length=15)
     registration_date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -25,10 +24,10 @@ class Student(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=40, verbose_name=_('name'))
-    duration = models.IntegerField(verbose_name=_('duration'))
-    start_date = models.DateField(verbose_name=_('start date'))
-    end_date = models.DateField(verbose_name=_('end date'))
+    name = models.CharField(_('name'), max_length=40)
+    duration = models.IntegerField(_('duration'))
+    start_date = models.DateField(_('start date'))
+    end_date = models.DateField(_('end date'))
 
     class Meta:
         verbose_name = _('Student')
@@ -55,19 +54,20 @@ class Enrollment(models.Model):
 class Certificate(models.Model):
     enrollment = models.ForeignKey(Enrollment, verbose_name=_('enrollment'),
                                    unique=True)
-    verification_code = models.CharField(max_length=32, unique=True,
-                                         verbose_name=_('verification code'))
-    certificate_number = models.CharField(max_length=50, unique=True,
-                                         verbose_name=_('certificate number'))
+    verification_code = models.CharField(_('verification code'), max_length=32,
+                                         unique=True)
+    certificate_number = models.CharField(_('certificate number'),
+                                          max_length=50, unique=True)
 
-    book_number = models.IntegerField(verbose_name=_('book number'))
-    book_sheet = models.IntegerField(verbose_name=_('book sheet'))
-    book_date = models.DateField(verbose_name=_('book date'))
-    process_number = models.IntegerField(verbose_name=_('process number'))
-    executive_director = models.CharField(max_length=40,
-        verbose_name=_('executive director'))
-    educational_secretary = models.CharField(max_length=40,
-        verbose_name=_('educational secretary'))
+    book_number = models.IntegerField(_('book number'))
+    book_sheet = models.IntegerField(_('book sheet'))
+    book_date = models.DateField(_('book date'))
+    process_number = models.IntegerField(_('process number'))
+    executive_director = models.CharField(_('executive director'),
+                                          max_length=40)
+    educational_secretary = models.CharField(_('educational secretary'),
+                                             max_length=40)
+
     # ato de credenciamento
 
     created_by = CreatingUserField(related_name="created_certificate")
