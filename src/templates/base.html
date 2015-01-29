@@ -45,6 +45,16 @@
             font-size: 4em;
         }
 
+        .rc-brand a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .rc-brand a:hover {
+            text-decoration: none;
+            color: #428bca;
+        }
+
         .rc-nav {
             padding-top: 1em;
             border-top: 1px solid #eee;
@@ -84,7 +94,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
-                <h1 class="rc-brand">reg<b>cert</b></h1>
+                <h1 class="rc-brand"><a href="{% url 'home' %}">reg<b>cert</b></a></h1>
                 <p class="lead">Registro de Certificados</p>
                 <ul class="nav nav-stacked rc-nav">
                     {% if user.is_active %}
