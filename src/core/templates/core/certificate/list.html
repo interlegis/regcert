@@ -6,12 +6,12 @@
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
         <li><a href="{% url 'certificate_create' %}">{% trans "Add new certificate" %}</a></li>
-        <li><a href="{% url 'certificate_search' %}">{% trans "Search certificate" %}</a></li>
+        <li><a href="{% url 'certificate_search' %}">{% trans "Search certificates" %}</a></li>
     </ul>
 </nav>
 {% if not certificates %}
 <div class="alert alert-warning" role="alert">
-    <p><b>No certificate found!</b> Click <a href="{% url 'certificate_create' %}">here</a> to add one.</p>
+    <p><b>{% trans "No certificate found!</b> Click" %} <a href="{% url 'certificate_create' %}">{% trans "here</a>to add one" %}</p>
 </div>
 {% else %}
 <table class="table table-hover">
@@ -37,7 +37,7 @@
             <td>{{ certificate.enrollment.course.name }}</td>
             <td>{{ certificate.enrollment.student.name }}</td>
             <td>{{ certificate.date_time }}</td>
-            <td>{{ certificate.created_by }}</td>
+            <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
             <td>
                 {% if certificate.invalidated %}
                     <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {% trans 'no' %}

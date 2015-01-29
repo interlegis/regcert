@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-28 18:37+0000\n"
+"POT-Creation-Date: 2015-01-29 13:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Motivo"
 #: core/templates/core/certificate/search.html:47
 #: core/templates/core/certificate/search.html:95
 msgid "Verification code"
-msgstr "Código de validação"
+msgstr "Código de conferência"
 
 #: core/forms.py:16 core/templates/core/course/list.html:21
 #: core/templates/core/student/list.html:20
@@ -37,7 +37,7 @@ msgstr "Nome"
 
 #: core/forms.py:26
 msgid "validation code"
-msgstr "Código de validação"
+msgstr "Código de conferência"
 
 #: core/forms.py:31
 msgid "Student rg"
@@ -80,7 +80,7 @@ msgstr ""
 msgid "Student"
 msgstr "Estudante"
 
-#: core/models.py:21 core/models.py:35 templates/base.html:93
+#: core/models.py:21 core/models.py:35 templates/base.html:103
 msgid "Students"
 msgstr "Estudantes"
 
@@ -149,7 +149,7 @@ msgstr "Secretário(a) escolar"
 msgid "Certificate"
 msgstr "Certificado"
 
-#: core/models.py:82 templates/base.html:91
+#: core/models.py:82 templates/base.html:101
 msgid "Certificates"
 msgstr "Certificados"
 
@@ -306,10 +306,17 @@ msgid "Invalidate certificate"
 msgstr "Invalidar certificado"
 
 #: core/templates/core/certificate/list.html:9
-#, fuzzy
-#| msgid "Search certificates"
-msgid "Search certificate"
+#: core/templates/core/certificate/search.html:7
+msgid "Search certificates"
 msgstr "Buscar certificados"
+
+#: core/templates/core/certificate/list.html:14
+msgid "No certificate found!</b> Click"
+msgstr "Certificado não encontrado!</b> Clique"
+
+#: core/templates/core/certificate/list.html:14
+msgid "here</a>to add one"
+msgstr "aqui</a> para adicionar um"
 
 #: core/templates/core/certificate/list.html:23
 #: core/templates/core/certificate/search.html:50
@@ -330,10 +337,6 @@ msgstr "É válido?"
 #: core/templates/core/student/list.html:24
 msgid "Options"
 msgstr "Opções"
-
-#: core/templates/core/certificate/search.html:7
-msgid "Search certificates"
-msgstr "Buscar certificados"
 
 #: core/templates/core/certificate/search.html:11
 msgid "Search certificates by:"
@@ -378,8 +381,8 @@ msgid "Edit"
 msgstr ""
 
 #: core/templates/core/home.html:9
-msgid "Validate certificate"
-msgstr "Validar certificado"
+msgid "Check certificate"
+msgstr "Conferir certificados"
 
 #: core/templates/core/student/confirm_delete.html:9
 #, python-format
@@ -397,25 +400,32 @@ msgstr "Adicionar novo estudante"
 msgid "Edit student"
 msgstr "Editar estudante"
 
-#: core/views.py:93 core/views.py:97
-msgid "student does not exists."
-msgstr ""
+#: core/views.py:94
+msgid "student not registered."
+msgstr "Esudante não cadastrado."
 
-#: core/views.py:101
+#: core/views.py:98
+msgid "course not registered."
+msgstr "Curso não cadastrado."
+
+#: core/views.py:102
 msgid "enrollment already exists."
-msgstr ""
+msgstr "Matrícula já cadastrada."
 
-#: templates/base.html:92
+#: templates/base.html:102
 msgid "Courses"
 msgstr "Cursos"
 
-#: templates/base.html:94
+#: templates/base.html:104
 msgid "Logout"
 msgstr "Sair"
 
-#: templates/base.html:96 templates/registration/login.html:34
+#: templates/base.html:106 templates/registration/login.html:34
 msgid "Login"
 msgstr "Acessar"
+
+#~ msgid "Validate certificate"
+#~ msgstr "Validar certificado"
 
 #~ msgid "delete"
 #~ msgstr "deletar"
@@ -434,7 +444,7 @@ msgstr "Acessar"
 
 #~| msgid "Verification code"
 #~ msgid "Verification Code"
-#~ msgstr "Código de validação"
+#~ msgstr "Código de conferência"
 
 #~ msgid "date/time"
 #~ msgstr "data/hora"

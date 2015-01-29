@@ -6,14 +6,14 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <h3>{% trans 'Validate certificate' %}</h3>
-        <p>Para validar um certificado, digite o código de validação no campo abaixo:</p>
+        <h3>{% trans 'Check certificate' %}</h3>
+        <p>Para conferir um certificado, digite o código de converência no campo abaixo:</p>
         <form method="post" class="form-horizontal">
             {% csrf_token %}
             <div class="input-group">
                 {{ form.verification_code | add_class:'form-control' }}
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Validar certificado</button>
+                    <button class="btn btn-primary" type="submit">Conferir certificado</button>
                 </span>
             </div><!-- /input-group -->
         </form>
