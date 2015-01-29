@@ -84,5 +84,7 @@ class Certificate(models.Model):
     def save(self, *args, **kwargs):
         if not self.verification_code:
             uuid = uuid4()
+            while Certificate.objects.filter(verification_code==uuid):
+                uuid = uuid4()
             self.verification_code = Baco.to_62(uuid.hex, base16)
         super(Certificate, self).save(*args, **kwargs)
