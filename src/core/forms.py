@@ -39,7 +39,7 @@ class CertificateCreateForm(forms.ModelForm):
             'educational_secretary']
 
     def save(self, commit=True):
-        student_name = self.cleaned_data['student']
+        student_rg = self.cleaned_data['student_rg']
         course_name = self.cleaned_data['course']
         enrollment = self.cleaned_data['enrollment']
 

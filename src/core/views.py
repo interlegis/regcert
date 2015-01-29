@@ -91,11 +91,11 @@ class CertificateCreate(LoginRequiredMixin, FormView):
         try:
             form.save()
         except Student.DoesNotExist:
-            form.add_error('student', _('student does not exists.'))
+            form.add_error('student_rg', _('student not registered.'))
             return super(CertificateCreate, self).form_invalid(form)
 
         except Course.DoesNotExist:
-            form.add_error('student', _('student does not exists.'))
+            form.add_error('course', _('course not registered.'))
             return super(CertificateCreate, self).form_invalid(form)
 
         except IntegrityError:
