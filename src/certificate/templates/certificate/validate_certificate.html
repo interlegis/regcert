@@ -17,9 +17,10 @@
 <p class="lead">Confirmamos que o certificado de Pós-Graduação
 Lato Sensu em <b>{{ certificate.enrollment.course.name }}</b> de <b>{{ certificate.enrollment.student.name }}</b> emitido pelo Instituto
 Legislativo Brasileiro em <b>{{ certificate.book_date }}</b>,
-sob número de <b>{{ certificate.certificate_number }}</b>, <b>{{ certificate.book_date }}</b>, está cadastrado em
+sob número de <b>{{ certificate.verification_code }}</b>, <b>{{ certificate.verification_code_date_time }}</b>, está cadastrado em
 nossa base de dados. Esta declaração não substitui a
-verificação de autenticidade do certificado. {{ certificate.date_time }}.</p>
+verificação de autenticidade do certificado.</p>
+<p><i>{% now "d/m/Y H:i" %}</i></p>
 
 {% else %}
 <div class="alert alert-warning" role="alert">

@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="page-header">
+    <h2>{% trans 'Create new certificate' %}</h2>
+</div>
+<form method="post" class="form-horizontal">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-warning" role="alert">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <!-- CERTIFICATE FIELDS -->
+    <h3>{% trans "Certificate" %}</h3>
+
+    {% if form.certificate_number.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.certificate_number.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.certificate_number.id_for_label }}" class="col-sm-2 control-label">{{ form.certificate_number.label }}</label>
+        <div class="col-sm-10">
+            {{ form.certificate_number | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.book_number.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.book_number.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.book_number.id_for_label }}" class="col-sm-2 control-label">{{ form.book_number.label }}</label>
+        <div class="col-sm-10">
+            {{ form.book_number | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.book_sheet.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.book_sheet.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.book_sheet.id_for_label }}" class="col-sm-2 control-label">{{ form.book_sheet.label }}</label>
+        <div class="col-sm-10">
+            {{ form.book_sheet | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.book_date.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.book_date.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.book_date.id_for_label }}" class="col-sm-2 control-label">{{ form.book_date.label }}</label>
+        <div class="col-sm-10 date">
+            {{ form.book_date | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.process_number.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.process_number.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.process_number.id_for_label }}" class="col-sm-2 control-label">{{ form.process_number.label }}</label>
+        <div class="col-sm-10">
+            {{ form.process_number | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.executive_director.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.executive_director.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.executive_director.id_for_label }}" class="col-sm-2 control-label">{{ form.executive_director.label }}</label>
+        <div class="col-sm-10">
+            {{ form.executive_director | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.educational_secretary.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.educational_secretary.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.educational_secretary.id_for_label }}" class="col-sm-2 control-label">{{ form.educational_secretary.label }}</label>
+        <div class="col-sm-10">
+            {{ form.educational_secretary | add_class:"form-control" }}
+        </div>
+    </div>
+
+    <!-- COURSE FIELDS -->
+    <h3>{% trans "Course" %}</h3>
+    <hr>
+    {% if form.course_name.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.course_name.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.course_name.id_for_label }}" class="col-sm-2 control-label">{{ form.course_name.label }}</label>
+        <div class="col-sm-10">
+            {{ form.course_name | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.course_duration.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.course_duration.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.course_duration.id_for_label }}" class="col-sm-2 control-label">{{ form.course_duration.label }}</label>
+        <div class="col-sm-10">
+            {{ form.course_duration | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.course_start_date.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.course_start_date.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.course_start_date.id_for_label }}" class="col-sm-2 control-label">{{ form.course_start_date.label }}</label>
+        <div class="col-sm-10 date">
+            {{ form.course_start_date | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.course_end_date.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.course_end_date.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.course_end_date.id_for_label }}" class="col-sm-2 control-label">{{ form.course_end_date.label }}</label>
+        <div class="col-sm-10 date">
+            {{ form.course_end_date | add_class:"form-control" }}
+        </div>
+    </div>
+
+    <!-- STUDENT FIELDS -->
+    <h3>{% trans "Student" %}</h3>
+    <hr>
+
+    {% if form.student_name.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.student_name.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.student_name.id_for_label }}" class="col-sm-2 control-label">{{ form.student_name.label }}</label>
+        <div class="col-sm-10">
+            {{ form.student_name | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.student_birthday.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.student_birthday.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.student_birthday.id_for_label }}" class="col-sm-2 control-label">{{ form.student_birthday.label }}</label>
+        <div class="col-sm-10 date">
+            {{ form.student_birthday | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.student_nationality.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.student_nationality.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.student_nationality.id_for_label }}" class="col-sm-2 control-label">{{ form.student_nationality.label }}</label>
+        <div class="col-sm-10">
+            {{ form.student_nationality | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.student_rg.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.student_rg.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.student_rg.id_for_label }}" class="col-sm-2 control-label">{{ form.student_rg.label }}</label>
+        <div class="col-sm-10">
+            {{ form.student_rg | add_class:"form-control" }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-primary">{% trans 'Add new certificate' %}</button>
+                <a href="javascript:history.back()" class="btn btn-default">{% trans 'Cancel' %}</a>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'bootstrap-3-datepicker/css/datepicker3.css' %}">
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}" charset="UTF-8"></script>
+<script>
+$('.date input').datepicker({
+    format: "dd/mm/yyyy",
+    todayBtn: "linked",
+    language: "pt-BR",
+    autoclose: true,
+    todayHighlight: true
+});
+</script>
+{% endblock %}

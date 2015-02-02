@@ -61,10 +61,10 @@
         <tr>
         {% endif %}
             <td>{{ certificate.verification_code }}</td>
-            <td>{{ certificate.enrollment.course.name }}</td>
-            <td>{{ certificate.enrollment.student.name }}</td>
-            <td>{{ certificate.date_time }}</td>
-            <td>{{ certificate.created_by }}</td>
+            <td>{{ certificate.course_name }}</td>
+            <td>{{ certificate.student_name }}</td>
+            <td>{{ certificate.verification_code_date_time }}</td>
+            <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
             <td>
                 {% if certificate.invalidated %}
                     <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {% trans 'no' %}
@@ -109,10 +109,10 @@
         <tr>
         {% endif %}
             <td>{{ certificate.verification_code }}</td>
-            <td>{{ certificate.enrollment.course.name }}</td>
-            <td>{{ certificate.enrollment.student.name }}</td>
-            <td>{{ certificate.date_time }}</td>
-            <td>{{ certificate.created_by }}</td>
+            <td>{{ certificate.course_name }}</td>
+            <td>{{ certificate.student_name }}</td>
+            <td>{{ certificate.verification_code_date_time }}</td>
+            <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
             <td>
                 {% if certificate.invalidated %}
                     <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {% trans 'no' %}

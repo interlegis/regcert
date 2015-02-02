@@ -22,7 +22,6 @@
             <th>{% trans 'Student' %}</th>
             <th>{% trans 'Date/Time' %}</th>
             <th>{% trans 'Created by' %}</th>
-            <th>{% trans 'Is valid?' %}</th>
             <th>{% trans 'Options' %}</th>
         </tr>
     </thead>
@@ -34,17 +33,10 @@
         <tr>
         {% endif %}
             <td>{{ certificate.verification_code }}</td>
-            <td>{{ certificate.enrollment.course.name }}</td>
-            <td>{{ certificate.enrollment.student.name }}</td>
-            <td>{{ certificate.date_time }}</td>
+            <td>{{ certificate.course_name }}</td>
+            <td>{{ certificate.student_name }}</td>
+            <td>{{ certificate.verification_code_date_time }}</td>
             <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
-            <td>
-                {% if certificate.invalidated %}
-                    <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {% trans 'no' %}
-                {% else %}
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {% trans 'yes' %}
-                {% endif %}
-            </td>
             <td>
                 <div class="btn-group" role="group">
                     <a class="btn btn-default btn-xs" href="{% url 'certificate_detail' certificate.id %}">

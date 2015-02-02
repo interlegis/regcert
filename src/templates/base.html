@@ -98,9 +98,7 @@
                 <p class="lead">Registro de Certificados</p>
                 <ul class="nav nav-stacked rc-nav">
                     {% if user.is_active %}
-                    <li><a href="{% url 'certificates' %}">{% trans 'Certificates' %}</a></li>
-                    <li><a href="{% url 'courses' %}">{% trans 'Courses' %}</a></li>
-                    <li><a href="{% url 'students' %}">{% trans 'Students' %}</a></li>
+                    <li><a href="{% url 'certificate_list' %}">{% trans 'Certificates' %}</a></li>
                     <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
