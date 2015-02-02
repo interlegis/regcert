@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <h3>{% trans 'Check certificate' %}</h3>
+        <p>Para conferir um certificado, digite o código de conferência (CC) no campo abaixo:</p>
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.verification_code | add_class:'form-control' }}
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Conferir certificado</button>
+                </span>
+            </div><!-- /input-group -->
+        </form>
+    </div>
+</div>
+{% endblock %}
