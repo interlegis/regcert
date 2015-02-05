@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -17,15 +19,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6s2_58uees+2qy6(+#*l-)m!r(2v@$a1eq!zhpqggd=sxlq0vs'
+SECRET_KEY = config(
+    'SECRET_KEY',
+    default='6s2_58uees+2qy6(+#*l-)m!r(2v@$a1eq!zhpqggd=sxlq0vs'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=list)
 
+
+# Login definition
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
@@ -43,10 +50,13 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'core',
     'certificate',
-
-    # Dev
-    'debug_toolbar',
 )
+
+if DEBUG:
+    INSTALLED_APPS += (
+        'debug_toolbar',
+    )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

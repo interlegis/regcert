@@ -2,3 +2,4 @@ Django>=1.7
 django-widget-tweaks
 pybaco
 django-audit-log
+python-decouple
