@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'core',
     'certificate',
+    'reports',
 )
 
 if DEBUG:
