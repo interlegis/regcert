@@ -39,7 +39,7 @@
 </form>
 <hr>
 
-{% if by_verification_code %}
+{% if certificates %}
 
 <table class="table table-hover">
     <thead>
@@ -54,7 +54,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for certificate in by_verification_code %}
+        {% for certificate in certificates %}
         {% if certificate.invalidated %}
         <tr class="danger">
         {% else %}
@@ -85,55 +85,6 @@
                 </div>
             </td>
         </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% elif by_name %}
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>{% trans 'Verification code' %}</th>
-            <th>{% trans 'Course' %}</th>
-            <th>{% trans 'Student' %}</th>
-            <th>{% trans 'Date/Time' %}</th>
-            <th>{% trans 'Created by' %}</th>
-            <th>{% trans 'Is valid?' %}</th>
-            <th>{% trans 'Options' %}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for certificate in by_name %}
-        {% if certificate.invalidated %}
-        <tr class="danger">
-        {% else %}
-        <tr>
-        {% endif %}
-            <td>{{ certificate.verification_code }}</td>
-            <td>{{ certificate.course_name }}</td>
-            <td>{{ certificate.student_name }}</td>
-            <td>{{ certificate.verification_code_date_time }}</td>
-            <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
-            <td>
-                {% if certificate.invalidated %}
-                    <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> {% trans 'no' %}
-                {% else %}
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {% trans 'yes' %}
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group" role="group">
-                    <a class="btn btn-default btn-xs" href="{% url 'certificate_detail' certificate.id %}">
-                      <span class="glyphicon glyphicon glyphicon-list" aria-hidden="true"></span>
-                    </a>
-                    {% if not certificate.invalidated %}
-                    <a class="btn btn-default btn-xs" href="{% url 'certificate_invalidate' certificate.id %}">
-                      <span class="glyphicon glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-                    </a>
-                    {% endif %}
-                </div>
-            </td>
-        </tr>
-
         {% endfor %}
     </tbody>
 </table>

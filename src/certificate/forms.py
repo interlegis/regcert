@@ -10,6 +10,7 @@ class SearchCertificateForm(forms.Form):
 
     options = (
         ('verification_code', _('Verification code')),
+        ('certificate_number', _('Certificate number')),
         ('name', _('Name')),
     )
 

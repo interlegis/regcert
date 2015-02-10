@@ -171,7 +171,7 @@ msgstr "Criado por"
 
 #: certificate/templates/certificate/detail_certificate.html:28
 msgid "Certificate number"
-msgstr "Número de certificado"
+msgstr "Número do certificado"
 
 #: certificate/templates/certificate/detail_certificate.html:30
 #: certificate/templates/certificate/invalidate_certificate.html:19

@@ -113,14 +113,19 @@ class CertificateSearch(LoginRequiredMixin, View):
         if form.is_valid():
             data = form.cleaned_data
             if data['search_options'] == 'name':
-                context['by_name'] = Certificate.objects.filter(
+                context['certificates'] = Certificate.objects.filter(
                     student_name__startswith=data['search_text'])
-                if not len(context['by_name']):
+                if not len(context['certificates']):
+                    context['invalid'] = True
+            elif data['search_options'] == 'certificate_number':
+                context['certificates'] = Certificate.objects.filter(
+                    certificate_number=data['search_text'])
+                if not len(context['certificates']):
                     context['invalid'] = True
             else:
-                context['by_verification_code'] = Certificate.objects.filter(
+                context['certificates'] = Certificate.objects.filter(
                     verification_code=data['search_text'])
-                if not len(context['by_verification_code']):
+                if not len(context['certificates']):
                     context['invalid'] = True
 
         return render(request, 'certificate/search_certificate.html', context)
