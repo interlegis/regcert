@@ -44,10 +44,11 @@ class CertificateCreate(LoginRequiredMixin, CreateView):
     template_name = 'certificate/create_certificate.html'
     success_url = reverse_lazy('certificate_list')
     fields = ['certificate_number', 'book_number', 'book_sheet', 'book_date',
-              'process_number', 'executive_director', 'educational_secretary',
-              'course_name', 'course_duration', 'course_start_date',
-              'course_end_date', 'student_name', 'student_birthday',
-              'student_nationality', 'student_rg']
+              'process_number', 'accreditation', 'executive_director',
+              'educational_secretary', 'course_name', 'course_duration',
+              'course_start_date', 'course_end_date', 'student_name',
+              'student_birthday', 'student_nationality',
+              'student_place_of_birth', 'student_rg']
 
 
 class CertificateDetail(LoginRequiredMixin, ListView):

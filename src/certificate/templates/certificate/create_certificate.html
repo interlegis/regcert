@@ -89,6 +89,20 @@
         </div>
     </div>
 
+    {% if form.accreditation.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.accreditation.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.accreditation.id_for_label }}" class="col-sm-2 control-label">{{ form.accreditation.label }}</label>
+        <div class="col-sm-10">
+            {{ form.accreditation | add_class:"form-control" }}
+        </div>
+    </div>
+
     {% if form.executive_director.errors %}
     <div class="alert alert-danger" role="alert">
         {{ form.executive_director.errors }}
@@ -219,6 +233,20 @@
         <label for="{{ form.student_nationality.id_for_label }}" class="col-sm-2 control-label">{{ form.student_nationality.label }}</label>
         <div class="col-sm-10">
             {{ form.student_nationality | add_class:"form-control" }}
+        </div>
+    </div>
+
+    {% if form.student_place_of_birth.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ form.student_place_of_birth.errors }}
+    </div>
+    <div class="form-group has-error">
+    {% else %}
+    <div class="form-group">
+    {% endif %}
+        <label for="{{ form.student_place_of_birth.id_for_label }}" class="col-sm-2 control-label">{{ form.student_place_of_birth.label }}</label>
+        <div class="col-sm-10">
+            {{ form.student_place_of_birth | add_class:"form-control" }}
         </div>
     </div>
 

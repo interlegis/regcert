@@ -18,6 +18,7 @@ class CertificateBase(models.Model):
     book_sheet = models.IntegerField(_('book sheet'))
     book_date = models.DateField(_('book date'))
     process_number = models.IntegerField(_('process number'))
+    accreditation = models.CharField(_('accreditation'), max_length=40)
     executive_director = models.CharField(_('executive director'),
                                           max_length=40)
     educational_secretary = models.CharField(_('educational secretary'),
@@ -35,6 +36,8 @@ class CertificateBase(models.Model):
     student_name = models.CharField(_('name'), max_length=40)
     student_birthday = models.DateField(_('birthday'))
     student_nationality = models.CharField(_('nationality'), max_length=40)
+    student_place_of_birth = models.CharField(_('place of birth'),
+                                              max_length=40)
     student_rg = models.CharField(_('rg'), max_length=15)
 
     class Meta:
