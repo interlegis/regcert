@@ -27,7 +27,7 @@ class CertificateBase(models.Model):
     # Course data
 
     course_name = models.CharField(_('name'), max_length=40)
-    course_duration = models.IntegerField(_('duration'))
+    course_duration = models.CharField(_('duration'), max_length=40)
     course_start_date = models.DateField(_('start date'))
     course_end_date = models.DateField(_('end date'))
 
