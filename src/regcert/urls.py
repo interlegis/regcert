@@ -9,5 +9,6 @@ urlpatterns = patterns(
     url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'},
         name='logout'),
     url(r'^certificados/', include('certificate.urls')),
+    url(r'^relatorios/', include('reports.urls')),
     url(r'^', include('core.urls')),
 )
