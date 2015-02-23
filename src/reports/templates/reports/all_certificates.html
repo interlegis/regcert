@@ -48,13 +48,12 @@
         <br>
         Coordenação de Educação Superior - COESUP
     </h1>
-    <h1 class="header-report">Relatório Regcert: todos os certificados cadastrados</h1>
+    <h1 class="header-report">{{ title }}</h1>
 </div>
 
 <div id="footer_content">
     <h3>Relatório gerado em {% now "d/m/Y, H:i" %} por {{ user.first_name }} {{ user.last_name }}</h3>
 </div>
-
 
 <div>
     {% for c in certificates %}
@@ -64,9 +63,13 @@
         <p><b>Estudante:</b> {{ c.student_name }} - <b>Data de nascimento:</b> {{ c.student_birthday }} - <b>RG:</b> {{ c.student_rg }}</p>
         <p><b>Código de conferência:</b> {{ c.verification_code }} - <b>Data/Hora do CC:</b> {{ c.verification_code_date_time }}</p>
         <p><b>Criado por: </b> {{ c.created_by.first_name }} {{ c.created_by.last_name }}</p>
+        {% if c.invalid %}
+            <p><b>Invalidado por: </b> {{ c.invalidated_by.first_name }} {{ c.invalidated_by.last_name }}</p>
+            <p><b>Data/hora da invalidação: </b> {{ c.invalidated_by_date_time }}</p>
+            <p><b>Motivo: </b> {{ c.invalidated_reason }}</p>
+        {% endif %}
         <hr>
     </div>
     {% endfor %}
 </div>
 {% endblock content %}
-
