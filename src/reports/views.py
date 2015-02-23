@@ -1,3 +1,4 @@
+#! coding: utf-8
 from itertools import chain
 
 from easy_pdf.views import PDFTemplateView
@@ -14,7 +15,7 @@ class ReportAllValidCertificates(PDFTemplateView):
             title="Hi there!",
             **kwargs)
         context['certificates'] = Certificate.objects.all()
-        context['title'] = 'Relatório Regcert: todos os certificados \
+        context['title'] = u'Relatório Regcert: todos os certificados \
                             cadastrados'
         return context
 
@@ -34,7 +35,7 @@ class ReportAllCertificates(PDFTemplateView):
         context['has_invalid_certificates'] = True
         context['certificates'] = sorted(all_certificates,
                                          key=lambda c: c.book_number)
-        context['title'] = 'Relatório Regcert: todos os certificados \
+        context['title'] = u'Relatório Regcert: todos os certificados \
                             cadastrados e anulados'
 
         return context
