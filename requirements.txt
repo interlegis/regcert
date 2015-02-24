@@ -3,3 +3,4 @@ django-widget-tweaks
 pybaco
 django-audit-log
 python-decouple
+dj-database-url
