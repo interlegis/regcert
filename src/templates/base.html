@@ -29,8 +29,6 @@
             margin: 0 4em;
         }
 
-
-
         .checkbox ul {
             list-style-type: none;
             padding-left: 0;
@@ -101,6 +99,7 @@
                 <ul class="nav nav-stacked rc-nav">
                     {% if user.is_active %}
                     <li><a href="{% url 'certificate_list' %}">{% trans 'Certificates' %}</a></li>
+                    <li><a href="{% url 'reports' %}">{% trans 'Reports' %}</a></li>
                     <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
