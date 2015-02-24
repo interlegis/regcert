@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="page-header">
+    <h2>{% trans 'Reports' %}</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Relatórios</th>
+            <th>Opções</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{% trans "All certificates" %}</td>
+            <td></td>
+            <td><a href="{% url 'report_all_certificates' %}" class="btn btn-default" target="_blank">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans "All valid certificates" %}</td>
+            <td></td>
+            <td><a href="{% url 'report_all_valid_certificates' %}" class="btn btn-default" target="_blank">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans "Certificates by course name" %}</td>
+            <td><input type="text" id="input-by-course" class="form-control" placeholder="{% trans "Course name" %}"></td>
+            <td><a href="{% url 'reports' %}" id="btn-by-course" class="btn btn-default" target="blank">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans "Certificates by student name" %}</td>
+            <td><input type="text" id="input-by-student" class="form-control" placeholder="{% trans "Student name" %}"></td>
+            <td><a href="{% url 'reports' %}" id="btn-by-student" class="btn btn-default">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans "Certificates by date" %}</td>
+            <td><input type="text" id="input-by-date" class="date form-control" placeholder="Data de cadastro no sistema"></td>
+            <td><a href="{% url 'reports' %}" id="btn-by-date" class="btn btn-default">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans "Certificates by book date" %}</td>
+            <td><input type="text" id="input-by-book-date" class="date form-control" placeholder="{% trans "Book date" %}"></td>
+            <td><a href="{% url 'reports' %}" id="btn-by-book-date" class="btn btn-default">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'bootstrap-3-datepicker/css/datepicker3.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'bootstrap-3-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'bootstrap-3-datepicker/js/locales/bootstrap-datepicker.pt-BR.js' %}" charset="UTF-8"></script>
+
+<script>
+$(document).ready(function () {
+    function GenereteCertificateUrl(name, url, sufix) {
+        console.log('func');
+            var data = $('#input-' + name).val();
+            data = data.replace(/ /g, '-');
+            data = data.replace(/\//g, '-');
+            $('#btn-' + name).attr('href', url + sufix + data);
+            $('#btn-' + name).attr('target', '_blank');
+    }
+    $('#btn-by-course').click(function(event) {
+        GenereteCertificateUrl('by-course', '{% url "reports" %}', 'certificados/curso/');
+    });
+    $('#btn-by-date').click(function(event) {
+        GenereteCertificateUrl('by-date', '{% url "reports" %}', 'certificados/data/');
+    });
+    $('#btn-by-book-date').click(function(event) {
+        GenereteCertificateUrl('by-book-date', '{% url "reports" %}', 'certificados/data-livro/');
+    });
+    $('#btn-by-student').click(function(event) {
+        GenereteCertificateUrl('by-student', '{% url "reports" %}', 'certificados/aluno/');
+    });
+
+    $('.date').datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        language: "pt-BR",
+        autoclose: true,
+        todayHighlight: true
+    });
+
+});
+</script>
+{% endblock js %}

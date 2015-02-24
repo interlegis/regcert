@@ -4,3 +4,4 @@ pybaco
 django-audit-log
 python-decouple
 dj-database-url
+django_easy_pdf

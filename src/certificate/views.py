@@ -16,23 +16,6 @@ class LoginRequiredMixin(object):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 
-class Home(View):
-
-    def get(self, request):
-        return render(request, 'core/home.html',
-            {'form': ValidateCertificateForm})
-
-    def post(self, request):
-        form = ValidateCertificateForm(request.POST)
-        if form.is_valid():
-            verification_code = form.cleaned_data['verification_code']
-
-            return HttpResponseRedirect('/certificados/validar/{}'.format(
-                verification_code))
-        else:
-            return render(request, 'core/home.html', {'form': form})
-
-
 class CertificateList(LoginRequiredMixin, ListView):
     model = Certificate
     context_object_name = 'certificates'

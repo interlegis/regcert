@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
 from audit_log.models.fields import CreatingUserField
@@ -45,6 +46,9 @@ class CertificateBase(models.Model):
         verbose_name = _('Certificate')
         verbose_name_plural = _('Certificates')
 
+    def __str__(self):
+        return '<Certificate %s>' % self.book_number
+
 
 class Certificate(CertificateBase):
     certificate_number = models.CharField(_('certificate number'),
@@ -62,8 +66,10 @@ class Certificate(CertificateBase):
 
 
 class InvalidCertificate(CertificateBase):
+    invalid = True
     certificate_number = models.CharField(_('certificate number'),
                                           max_length=50)
-    created_by = CreatingUserField(related_name="created_certificate_invalid")
+    created_by = models.ForeignKey(User)
     invalidated_by = CreatingUserField(related_name="invalidated_certificate")
+    invalidated_by_date_time = models.DateTimeField(auto_now_add=True)
     invalidated_reason = models.TextField()
