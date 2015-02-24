@@ -1,12 +1,55 @@
 #! coding: utf-8
+from datetime import datetime
 from itertools import chain
 
+from django.http import HttpResponseNotFound
+from django.views.generic import View
+from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.utils.decorators import method_decorator
 from easy_pdf.views import PDFTemplateView
 
 from certificate.models import Certificate, InvalidCertificate
+from reports.forms import ReportsForm
 
 
-class ReportAllValidCertificates(PDFTemplateView):
+class PDFGenerator(PDFTemplateView):
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        if not context['certificates']:
+            return HttpResponseNotFound('<h1>Page not found</h1>')
+        return self.render_to_response(context)
+
+
+class LoginRequiredMixin(object):
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+
+class ReportsView(LoginRequiredMixin, View):
+
+    def get(self, request):
+
+        form = ReportsForm(request.GET)
+
+        context = {}
+        context['form'] = form
+
+        if form.is_valid():
+            data = form.cleaned_data
+            if data['report_options'] == 'all_certificates':
+                return redirect(reverse('report_all_certificates'))
+            elif data['report_options'] == 'all_valid_certificates':
+                return redirect(reverse('report_all_valid_certificates'))
+        else:
+            return render(request, 'reports/reports.html', context)
+
+
+class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
     template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
@@ -20,7 +63,7 @@ class ReportAllValidCertificates(PDFTemplateView):
         return context
 
 
-class ReportAllCertificates(PDFTemplateView):
+class ReportAllCertificates(LoginRequiredMixin, PDFGenerator):
     template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
@@ -40,14 +83,8 @@ class ReportAllCertificates(PDFTemplateView):
         return context
 
 
-class ReportCertificatesByCourse(PDFTemplateView):
+class ReportCertificatesByCourse(LoginRequiredMixin, PDFGenerator):
     template_name = 'reports/all_certificates.html'
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        if not context['certificates']:
-            return HttpResponseNotFound('<h1>Page not found</h1>')
-        return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
         context = super(ReportCertificatesByCourse, self).get_context_data(
@@ -60,4 +97,22 @@ class ReportCertificatesByCourse(PDFTemplateView):
         context['title'] = u'Relatório Regcert: todos os certificados do \
                              curso de pós-graduação lato sensu em {} \
                              do ILB'.format(course_name)
+        return context
+
+
+class ReportCertificatesByDate(LoginRequiredMixin, PDFGenerator):
+    template_name = 'reports/all_certificates.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportCertificatesByDate, self).get_context_data(
+            pagesize="A4",
+            title="Hi there!",
+            **kwargs)
+        _date = [int(d) for d in reversed(kwargs['date'].split('-'))]
+        context['certificates'] = Certificate.objects.filter(
+            verification_code_date_time__year=_date[0],
+            verification_code_date_time__month=_date[1],
+            verification_code_date_time__day=_date[2])
+        context['title'] = u'Relatório Regcert: todos os certificados \
+                             cadastrados no sistema em {}.'.format(_date)
         return context
