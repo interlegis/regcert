@@ -1,5 +1,4 @@
 #! coding: utf-8
-from datetime import datetime
 from itertools import chain
 
 from django.http import HttpResponseNotFound
@@ -15,6 +14,8 @@ from reports.forms import ReportsForm
 
 
 class PDFGenerator(PDFTemplateView):
+
+    template_name = 'reports/report.html'
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
@@ -50,7 +51,6 @@ class ReportsView(LoginRequiredMixin, View):
 
 
 class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
-    template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
         context = super(ReportAllValidCertificates, self).get_context_data(
@@ -64,7 +64,6 @@ class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
 
 
 class ReportAllCertificates(LoginRequiredMixin, PDFGenerator):
-    template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
         context = super(ReportAllCertificates, self).get_context_data(
@@ -84,7 +83,6 @@ class ReportAllCertificates(LoginRequiredMixin, PDFGenerator):
 
 
 class ReportCertificatesByCourse(LoginRequiredMixin, PDFGenerator):
-    template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
         context = super(ReportCertificatesByCourse, self).get_context_data(
@@ -101,18 +99,59 @@ class ReportCertificatesByCourse(LoginRequiredMixin, PDFGenerator):
 
 
 class ReportCertificatesByDate(LoginRequiredMixin, PDFGenerator):
-    template_name = 'reports/all_certificates.html'
 
     def get_context_data(self, **kwargs):
         context = super(ReportCertificatesByDate, self).get_context_data(
             pagesize="A4",
             title="Hi there!",
             **kwargs)
+
+        # must be a better way to do it
         _date = [int(d) for d in reversed(kwargs['date'].split('-'))]
         context['certificates'] = Certificate.objects.filter(
             verification_code_date_time__year=_date[0],
             verification_code_date_time__month=_date[1],
             verification_code_date_time__day=_date[2])
         context['title'] = u'Relatório Regcert: todos os certificados \
-                             cadastrados no sistema em {}.'.format(_date)
+                             cadastrados no sistema em {}/{}/{}.'.format(
+            _date[2],
+            _date[1],
+            _date[0]
+        )
+        return context
+
+
+class ReportCertificatesByBookDate(LoginRequiredMixin, PDFGenerator):
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportCertificatesByBookDate, self).get_context_data(
+            pagesize="A4",
+            title="Hi there!",
+            **kwargs)
+
+        # must be a better way to do it
+        _date = [int(d) for d in reversed(kwargs['date'].split('-'))]
+        context['certificates'] = Certificate.objects.filter(
+            book_date__year=_date[0],
+            book_date__month=_date[1],
+            book_date__day=_date[2])
+        context['title'] = u'Relatório Regcert: todos os certificados \
+                             registrados no Livro de Registro Escolar do ILB \
+                             em {}/{}/{}.'.format(_date[2], _date[1], _date[0])
+        return context
+
+
+class ReportCertificatesByStudent(LoginRequiredMixin, PDFGenerator):
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportCertificatesByStudent, self).get_context_data(
+            pagesize="A4",
+            title="Hi there!",
+            **kwargs)
+        student_name = kwargs['student_name'].replace('-', ' ')
+        context['certificates'] = Certificate.objects.filter(
+            student_name=student_name)
+        context['title'] = u'Relatório Regcert: todos os certificados de {} \
+                             emitidos pelo ILB'.format(student_name)
+        context['student_report'] = True
         return context

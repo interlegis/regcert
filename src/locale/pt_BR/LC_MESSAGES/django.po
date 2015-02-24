@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-10 16:30+0000\n"
+"POT-Creation-Date: 2015-02-24 14:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,94 +27,98 @@ msgstr "Motivo"
 #: certificate/templates/certificate/invalidate_certificate.html:15
 #: certificate/templates/certificate/list_certificates.html:20
 #: certificate/templates/certificate/search_certificate.html:47
-#: certificate/templates/certificate/search_certificate.html:95
 msgid "Verification code"
 msgstr "Código de conferência"
 
 #: certificate/forms.py:13
+#: certificate/templates/certificate/detail_certificate.html:28
+msgid "Certificate number"
+msgstr "Número do certificado"
+
+#: certificate/forms.py:14
 msgid "Name"
 msgstr "Nome"
 
-#: certificate/forms.py:23
+#: certificate/forms.py:24
 msgid "validation code"
 msgstr "Código de conferência"
 
-#: certificate/models.py:14
+#: certificate/models.py:15
 msgid "verification code"
 msgstr "código de validação"
 
-#: certificate/models.py:17
+#: certificate/models.py:18
 msgid "book number"
 msgstr "número do livro"
 
-#: certificate/models.py:18
+#: certificate/models.py:19
 msgid "book sheet"
 msgstr "página do livro"
 
-#: certificate/models.py:19
+#: certificate/models.py:20
 msgid "book date"
 msgstr "data de registro no livro"
 
-#: certificate/models.py:20
+#: certificate/models.py:21
 msgid "process number"
 msgstr "número do processo"
 
-#: certificate/models.py:21
+#: certificate/models.py:22
 msgid "accreditation"
 msgstr "ato de credenciamento"
 
-#: certificate/models.py:22
+#: certificate/models.py:23
 msgid "executive director"
 msgstr "diretor(a) executivo(a)"
 
-#: certificate/models.py:24
+#: certificate/models.py:25
 msgid "educational secretary"
 msgstr "secretário(a) escolar"
 
-#: certificate/models.py:29 certificate/models.py:36
+#: certificate/models.py:30 certificate/models.py:37
 msgid "name"
 msgstr "nome"
 
-#: certificate/models.py:30
+#: certificate/models.py:31
 msgid "duration"
 msgstr "carga horária"
 
-#: certificate/models.py:31
+#: certificate/models.py:32
 msgid "start date"
 msgstr "data de início"
 
-#: certificate/models.py:32
+#: certificate/models.py:33
 msgid "end date"
 msgstr "data de término"
 
-#: certificate/models.py:37
+#: certificate/models.py:38
 msgid "birthday"
 msgstr "Data de nascimento"
 
-#: certificate/models.py:38
+#: certificate/models.py:39
 msgid "nationality"
 msgstr "nacionalidade"
 
-#: certificate/models.py:39
+#: certificate/models.py:40
 msgid "place of birth"
 msgstr "naturalidade"
 
-#: certificate/models.py:41
+#: certificate/models.py:42
 msgid "rg"
 msgstr ""
 
-#: certificate/models.py:45
+#: certificate/models.py:46
 #: certificate/templates/certificate/create_certificate.html:20
 #: certificate/templates/certificate/detail_certificate.html:20
 #: certificate/templates/certificate/invalidate_certificate.html:14
 msgid "Certificate"
 msgstr "Certificado"
 
-#: certificate/models.py:46 templates/base.html:103
+#: certificate/models.py:47 templates/base.html:103
 msgid "Certificates"
 msgstr "Certificados"
 
-#: certificate/models.py:50 certificate/models.py:65
+#: certificate/models.py:54 certificate/models.py:70
 msgid "certificate number"
 msgstr "número do certificado"
 
@@ -127,7 +131,6 @@ msgstr "Criar novo certificado"
 #: certificate/templates/certificate/detail_certificate.html:48
 #: certificate/templates/certificate/list_certificates.html:21
 #: certificate/templates/certificate/search_certificate.html:48
-#: certificate/templates/certificate/search_certificate.html:96
 msgid "Course"
 msgstr "Curso"
 
@@ -136,7 +139,6 @@ msgstr "Curso"
 #: certificate/templates/certificate/detail_certificate.html:59
 #: certificate/templates/certificate/list_certificates.html:22
 #: certificate/templates/certificate/search_certificate.html:49
-#: certificate/templates/certificate/search_certificate.html:97
 msgid "Student"
 msgstr "Estudante"
 
@@ -159,19 +161,15 @@ msgid "invalidate"
 msgstr "invalidar"
 
 #: certificate/templates/certificate/detail_certificate.html:23
+#: reports/templates/reports/reports.html:50
 msgid "Date"
 msgstr "Data"
 
 #: certificate/templates/certificate/detail_certificate.html:25
 #: certificate/templates/certificate/list_certificates.html:24
 #: certificate/templates/certificate/search_certificate.html:51
-#: certificate/templates/certificate/search_certificate.html:99
 msgid "Created by"
 msgstr "Criado por"
-
-#: certificate/templates/certificate/detail_certificate.html:28
-msgid "Certificate number"
-msgstr "Número do certificado"
 
 #: certificate/templates/certificate/detail_certificate.html:30
 #: certificate/templates/certificate/invalidate_certificate.html:19
@@ -185,6 +183,7 @@ msgstr "Página do livro"
 
 #: certificate/templates/certificate/detail_certificate.html:34
 #: certificate/templates/certificate/invalidate_certificate.html:23
+#: reports/templates/reports/reports.html:57
 msgid "Book date"
 msgstr "Data de registro no livro"
 
@@ -255,13 +254,11 @@ msgstr "aqui</a> para adicionar um"
 
 #: certificate/templates/certificate/list_certificates.html:23
 #: certificate/templates/certificate/search_certificate.html:50
-#: certificate/templates/certificate/search_certificate.html:98
 msgid "Date/Time"
 msgstr "Data/Hora"
 
 #: certificate/templates/certificate/list_certificates.html:25
 #: certificate/templates/certificate/search_certificate.html:53
-#: certificate/templates/certificate/search_certificate.html:101
 msgid "Options"
 msgstr "Opções"
 
@@ -274,17 +271,14 @@ msgid "Search"
 msgstr "Buscar"
 
 #: certificate/templates/certificate/search_certificate.html:52
-#: certificate/templates/certificate/search_certificate.html:100
 msgid "Is valid?"
 msgstr "É válido?"
 
 #: certificate/templates/certificate/search_certificate.html:70
-#: certificate/templates/certificate/search_certificate.html:118
 msgid "no"
 msgstr "não"
 
 #: certificate/templates/certificate/search_certificate.html:72
-#: certificate/templates/certificate/search_certificate.html:120
 msgid "yes"
 msgstr "sim"
 
@@ -299,6 +293,57 @@ msgstr "Certificado não encontrado"
 #: core/templates/core/home.html:9
 msgid "Check certificate"
 msgstr "Conferir certificados"
+
+#: reports/forms.py:8 reports/templates/reports/reports.html:21
+msgid "All certificates"
+msgstr "Todos os certificados"
+
+#: reports/forms.py:9 reports/templates/reports/reports.html:28
+msgid "All valid certificates"
+msgstr "Todos os certificado válidos"
+
+#: reports/forms.py:10
+#, fuzzy
+#| msgid "Search certificates by:"
+msgid "All certificates by course"
+msgstr "Buscar certificados por:"
+
+#: reports/templates/reports/reports.html:8
+msgid "Reports"
+msgstr "Relatórios"
+
+#: reports/templates/reports/reports.html:25
+#: reports/templates/reports/reports.html:32
+#: reports/templates/reports/reports.html:39
+#: reports/templates/reports/reports.html:46
+#: reports/templates/reports/reports.html:53
+#: reports/templates/reports/reports.html:60
+msgid "Generete"
+msgstr "Gerar"
+
+#: reports/templates/reports/reports.html:35
+msgid "Certificates by course name"
+msgstr "Certificados por curso"
+
+#: reports/templates/reports/reports.html:36
+msgid "Course name"
+msgstr "Nome do curso"
+
+#: reports/templates/reports/reports.html:42
+msgid "Certificates by student name"
+msgstr "Certificados por aluno"
+
+#: reports/templates/reports/reports.html:43
+msgid "Student name"
+msgstr "Nome do estudante"
+
+#: reports/templates/reports/reports.html:49
+msgid "Certificates by date"
+msgstr "Certificados por data de cadastro no sistema"
+
+#: reports/templates/reports/reports.html:56
+msgid "Certificates by book date"
+msgstr "Certificados por data de registro no Livro de Registros"
 
 #: templates/base.html:104
 msgid "Logout"
@@ -388,9 +433,6 @@ msgstr "Acessar"
 
 #~ msgid "courses"
 #~ msgstr "cursos"
-
-#~ msgid "Reports"
-#~ msgstr "Relatórios"
 
 #~ msgid "Hours"
 #~ msgstr "Horas"
