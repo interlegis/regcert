@@ -1,7 +1,10 @@
 from django.conf.urls import patterns, url
 
-from reports.views import (ReportsView, ReportAllValidCertificates,
-                           ReportAllCertificates, ReportCertificatesByCourse,
+from reports.views import (ReportsView,
+                           ReportAllCertificates,
+                           ReportAllValidCertificates,
+                           ReportAllInvalidCertificates,
+                           ReportCertificatesByCourse,
                            ReportCertificatesByDate,
                            ReportCertificatesByBookDate,
                            ReportCertificatesByStudent)
@@ -15,6 +18,8 @@ urlpatterns = patterns(
         name='report_all_certificates'),
     url(r'^certificados/validos$', ReportAllValidCertificates.as_view(),
         name='report_all_valid_certificates'),
+    url(r'^certificados/invalidos$', ReportAllInvalidCertificates.as_view(),
+        name='report_all_invalid_certificates'),
     url(r'^certificados/curso/(?P<course_name>[\w-]+)$',
         ReportCertificatesByCourse.as_view(),
         name='report_certificates_by_course'),

@@ -3,9 +3,8 @@ from itertools import chain
 
 from django.http import HttpResponseNotFound
 from django.views.generic import View
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
 from django.utils.decorators import method_decorator
 from easy_pdf.views import PDFTemplateView
 
@@ -19,7 +18,8 @@ class PDFGenerator(PDFTemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         if not context['certificates']:
-            return HttpResponseNotFound('<h1>Nenhum certificado encontrado!</h1>')
+            error_404_msg = '<h1>Nenhum certificado encontrado!</h1>'
+            return HttpResponseNotFound(error_404_msg)
         return self.render_to_response(context)
 
 
@@ -46,6 +46,20 @@ class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
         context['certificates'] = Certificate.objects.all()
         context['title'] = u'Relatório Regcert: todos os certificados \
                             cadastrados'
+        return context
+
+
+class ReportAllInvalidCertificates(LoginRequiredMixin, PDFGenerator):
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportAllInvalidCertificates, self).get_context_data(
+            pagesize="A4",
+            title="Hi there!",
+            **kwargs)
+        context['has_invalid_certificates'] = True
+        context['certificates'] = InvalidCertificate.objects.all()
+        context['title'] = u'Relatório Regcert: todos os certificados \
+                            inválidos cadastrados'
         return context
 
 

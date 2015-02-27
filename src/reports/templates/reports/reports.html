@@ -32,6 +32,13 @@
                 {% trans "Generete" %}</a></td>
         </tr>
         <tr>
+            <td>{% trans "All invalid certificates" %}</td>
+            <td></td>
+            <td><a href="{% url 'report_all_invalid_certificates' %}" class="btn btn-default" target="_blank">
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                {% trans "Generete" %}</a></td>
+        </tr>
+        <tr>
             <td>{% trans "Certificates by course name" %}</td>
             <td><input type="text" id="input-by-course" class="form-control" placeholder="{% trans "Course name" %}"></td>
             <td><a href="{% url 'reports' %}" id="btn-by-course" class="btn btn-default" target="blank">
