@@ -58,7 +58,7 @@
 <div>
     {% for c in certificates %}
     <div class='cert'>
-        <p><b>Número do certificado:</b> {{ c.certificate_number }} - <b>Número do livro:</b> {{ c.book_number }}- <b>Número da folha:</b> {{ c.book_sheet }} - <b>Número do processo:</b> {{ c.process_number }}</p>
+        <p><b>Número do certificado:</b> {{ c.certificate_number }} - <b>Número do livro:</b> {{ c.book_number }} - <b>Número da folha:</b> {{ c.book_sheet }} - <b>Número do processo:</b> {{ c.process_number }}</p>
         <p><b>Curso:</b> {{ c.course_name }} - <b>Carga horária:</b> {{ c.course_duration }} horas - <b>Data de incício:</b> {{ c.course_start_date }} - <b>Data de término:</b> {{ c.course_end_date }}</p>
         <p>{% if not student_report %}
             <b>Estudante:</b> {{ c.student_name }} -

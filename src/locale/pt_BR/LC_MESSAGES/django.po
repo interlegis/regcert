@@ -317,7 +317,7 @@ msgstr "Todos os certificado válidos"
 
 #: reports/templates/reports/reports.html:35
 msgid "All invalid certificates"
-msgstr "Todos os certificado inválidos"
+msgstr "Todos os certificado invalidados"
 
 #: reports/templates/reports/reports.html:42
 msgid "Certificates by course name"

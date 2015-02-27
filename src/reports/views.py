@@ -59,7 +59,7 @@ class ReportAllInvalidCertificates(LoginRequiredMixin, PDFGenerator):
         context['has_invalid_certificates'] = True
         context['certificates'] = InvalidCertificate.objects.all()
         context['title'] = u'Relatório Regcert: todos os certificados \
-                            inválidos cadastrados'
+                            invalidados cadastrados'
         return context
 
 
