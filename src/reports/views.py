@@ -19,7 +19,7 @@ class PDFGenerator(PDFTemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         if not context['certificates']:
-            return HttpResponseNotFound('<h1>Page not found</h1>')
+            return HttpResponseNotFound('<h1>Nenhum certificado encontrado!</h1>')
         return self.render_to_response(context)
 
 
