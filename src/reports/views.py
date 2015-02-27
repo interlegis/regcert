@@ -10,7 +10,6 @@ from django.utils.decorators import method_decorator
 from easy_pdf.views import PDFTemplateView
 
 from certificate.models import Certificate, InvalidCertificate
-from reports.forms import ReportsForm
 
 
 class PDFGenerator(PDFTemplateView):
@@ -34,20 +33,7 @@ class LoginRequiredMixin(object):
 class ReportsView(LoginRequiredMixin, View):
 
     def get(self, request):
-
-        form = ReportsForm(request.GET)
-
-        context = {}
-        context['form'] = form
-
-        if form.is_valid():
-            data = form.cleaned_data
-            if data['report_options'] == 'all_certificates':
-                return redirect(reverse('report_all_certificates'))
-            elif data['report_options'] == 'all_valid_certificates':
-                return redirect(reverse('report_all_valid_certificates'))
-        else:
-            return render(request, 'reports/reports.html', context)
+        return render(request, 'reports/reports.html', {})
 
 
 class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
