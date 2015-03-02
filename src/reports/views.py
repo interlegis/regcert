@@ -44,8 +44,8 @@ class ReportAllValidCertificates(LoginRequiredMixin, PDFGenerator):
             title="Hi there!",
             **kwargs)
         context['certificates'] = Certificate.objects.all()
-        context['title'] = u'Relatório Regcert: todos os certificados \
-                            cadastrados'
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos'
         return context
 
 
@@ -58,8 +58,8 @@ class ReportAllInvalidCertificates(LoginRequiredMixin, PDFGenerator):
             **kwargs)
         context['has_invalid_certificates'] = True
         context['certificates'] = InvalidCertificate.objects.all()
-        context['title'] = u'Relatório Regcert: todos os certificados \
-                            invalidados cadastrados'
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros invalidados'
         return context
 
 
@@ -77,8 +77,8 @@ class ReportAllCertificates(LoginRequiredMixin, PDFGenerator):
         context['has_invalid_certificates'] = True
         context['certificates'] = sorted(all_certificates,
                                          key=lambda c: c.book_number)
-        context['title'] = u'Relatório Regcert: todos os certificados \
-                            cadastrados e anulados'
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos e também os invalidados'
         return context
 
 
@@ -92,9 +92,9 @@ class ReportCertificatesByCourse(LoginRequiredMixin, PDFGenerator):
         course_name = kwargs['course_name'].replace('-', ' ')
         context['certificates'] = Certificate.objects.filter(
             course_name=course_name)
-        context['title'] = u'Relatório Regcert: todos os certificados do \
-                             curso de pós-graduação lato sensu em {} \
-                             do ILB'.format(course_name)
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos do curso de pós-graduação lato \
+                             sensu em {} do ILB'.format(course_name)
         return context
 
 
@@ -112,8 +112,8 @@ class ReportCertificatesByDate(LoginRequiredMixin, PDFGenerator):
             verification_code_date_time__year=_date[0],
             verification_code_date_time__month=_date[1],
             verification_code_date_time__day=_date[2])
-        context['title'] = u'Relatório Regcert: todos os certificados \
-                             cadastrados no sistema em {}/{}/{}.'.format(
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos no sistema em {}/{}/{}'.format(
             _date[2],
             _date[1],
             _date[0]
@@ -135,9 +135,10 @@ class ReportCertificatesByBookDate(LoginRequiredMixin, PDFGenerator):
             book_date__year=_date[0],
             book_date__month=_date[1],
             book_date__day=_date[2])
-        context['title'] = u'Relatório Regcert: todos os certificados \
-                             registrados no Livro de Registro Escolar do ILB \
-                             em {}/{}/{}.'.format(_date[2], _date[1], _date[0])
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos no sistema registrados no \
+                             Livro de Registro Escolar do ILB em \
+                             {}/{}/{}'.format(_date[2], _date[1], _date[0])
         return context
 
 
@@ -151,7 +152,8 @@ class ReportCertificatesByStudent(LoginRequiredMixin, PDFGenerator):
         student_name = kwargs['student_name'].replace('-', ' ')
         context['certificates'] = Certificate.objects.filter(
             student_name=student_name)
-        context['title'] = u'Relatório Regcert: todos os certificados de {} \
-                             emitidos pelo ILB'.format(student_name)
+        context['title'] = u'Relatório Regcert: todos os certificados com \
+                             cadastros válidos de pós-graduação lato sensu de \
+                             {} emitidos pelo ILB'.format(student_name)
         context['student_report'] = True
         return context

@@ -313,15 +313,15 @@ msgstr "Gerar"
 
 #: reports/templates/reports/reports.html:28
 msgid "All valid certificates"
-msgstr "Todos os certificado válidos"
+msgstr "Todos os certificado com cadastros válidos"
 
 #: reports/templates/reports/reports.html:35
 msgid "All invalid certificates"
-msgstr "Todos os certificado invalidados"
+msgstr "Todos os certificado com cadastros invalidados"
 
 #: reports/templates/reports/reports.html:42
 msgid "Certificates by course name"
-msgstr "Certificados por curso"
+msgstr "Certificados com cadastros válidos por curso"
 
 #: reports/templates/reports/reports.html:43
 msgid "Course name"
@@ -337,11 +337,11 @@ msgstr "Nome do estudante"
 
 #: reports/templates/reports/reports.html:56
 msgid "Certificates by date"
-msgstr "Certificados por data de cadastro no sistema"
+msgstr "Certificados com cadastros válidos por data de cadastro no sistema"
 
 #: reports/templates/reports/reports.html:63
 msgid "Certificates by book date"
-msgstr "Certificados por data de registro no Livro de Registros"
+msgstr "Certificados com cadastros válidos por data de registro no Livro de Registro Escolar"
 
 #: templates/base.html:103
 msgid "Logout"
