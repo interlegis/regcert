@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-27 14:30+0000\n"
+"POT-Creation-Date: 2015-03-10 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,16 +127,16 @@ msgid "Create new certificate"
 msgstr "Criar novo certificado"
 
 #: certificate/templates/certificate/create_certificate.html:135
-#: certificate/templates/certificate/detail_certificate.html:47
-#: certificate/templates/certificate/detail_certificate.html:48
+#: certificate/templates/certificate/detail_certificate.html:49
+#: certificate/templates/certificate/detail_certificate.html:50
 #: certificate/templates/certificate/list_certificates.html:21
 #: certificate/templates/certificate/search_certificate.html:48
 msgid "Course"
 msgstr "Curso"
 
 #: certificate/templates/certificate/create_certificate.html:194
-#: certificate/templates/certificate/detail_certificate.html:58
-#: certificate/templates/certificate/detail_certificate.html:59
+#: certificate/templates/certificate/detail_certificate.html:60
+#: certificate/templates/certificate/detail_certificate.html:61
 #: certificate/templates/certificate/list_certificates.html:22
 #: certificate/templates/certificate/search_certificate.html:49
 msgid "Student"
@@ -192,40 +192,48 @@ msgid "Process Number"
 msgstr "Número do processo"
 
 #: certificate/templates/certificate/detail_certificate.html:38
+msgid "Accreditation"
+msgstr "Ato de credenciamento"
+
+#: certificate/templates/certificate/detail_certificate.html:40
 #: certificate/templates/certificate/invalidate_certificate.html:27
 msgid "Executive director"
 msgstr "Diretor(a) executivo(a)"
 
-#: certificate/templates/certificate/detail_certificate.html:40
+#: certificate/templates/certificate/detail_certificate.html:42
 #: certificate/templates/certificate/invalidate_certificate.html:29
 msgid "Educational secretary"
 msgstr "Secretário(a) escolar"
 
-#: certificate/templates/certificate/detail_certificate.html:50
+#: certificate/templates/certificate/detail_certificate.html:52
 msgid "Duration"
 msgstr "Duração"
 
-#: certificate/templates/certificate/detail_certificate.html:51
+#: certificate/templates/certificate/detail_certificate.html:53
 msgid "hours"
 msgstr "horas"
 
-#: certificate/templates/certificate/detail_certificate.html:52
+#: certificate/templates/certificate/detail_certificate.html:54
 msgid "Start date"
 msgstr "Data de início"
 
-#: certificate/templates/certificate/detail_certificate.html:54
+#: certificate/templates/certificate/detail_certificate.html:56
 msgid "End date"
 msgstr "Data de término"
 
-#: certificate/templates/certificate/detail_certificate.html:61
+#: certificate/templates/certificate/detail_certificate.html:63
 msgid "Birthday"
 msgstr "Data de nascimento"
 
-#: certificate/templates/certificate/detail_certificate.html:63
+#: certificate/templates/certificate/detail_certificate.html:65
 msgid "Nationality"
 msgstr "Nacionalidade"
 
-#: certificate/templates/certificate/detail_certificate.html:65
+#: certificate/templates/certificate/detail_certificate.html:67
+msgid "Place of birth"
+msgstr "Naturalidade"
+
+#: certificate/templates/certificate/detail_certificate.html:69
 msgid "RG"
 msgstr "RG"
 
@@ -341,7 +349,9 @@ msgstr "Certificados com cadastros válidos por data de cadastro no sistema"
 
 #: reports/templates/reports/reports.html:63
 msgid "Certificates by book date"
-msgstr "Certificados com cadastros válidos por data de registro no Livro de Registro Escolar"
+msgstr ""
+"Certificados com cadastros válidos por data de registro no Livro de Registro "
+"Escolar"
 
 #: templates/base.html:103
 msgid "Logout"
