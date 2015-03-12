@@ -39,13 +39,6 @@ def test_certificate_detail_view():
 
 
 @pytest.mark.django_db
-def test_certificate_validate_view():
-    mommy.make(Certificate, verification_code=1)
-    _test_not_authenticated_request('certificate_validate',
-                                    **{'verification_code': 1})
-
-
-@pytest.mark.django_db
 def test_certificate_invalidate_view():
     mommy.make(InvalidCertificate, pk=1)
     _test_not_authenticated_request('certificate_invalidate',
