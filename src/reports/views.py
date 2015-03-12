@@ -113,7 +113,7 @@ class ReportCertificatesByDate(LoginRequiredMixin, PDFGenerator):
             verification_code_date_time__month=_date[1],
             verification_code_date_time__day=_date[2])
         context['title'] = u'Relatório Regcert: todos os certificados com \
-                             cadastros válidos no sistema em {}/{}/{}'.format(
+                             cadastros válidos efetuados no sistema em {}/{}/{}'.format(
             _date[2],
             _date[1],
             _date[0]
