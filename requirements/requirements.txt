@@ -6,5 +6,4 @@ python-decouple
 dj-database-url
 django_easy_pdf
 xhtml2pdf
-gunicorn
 psycopg2

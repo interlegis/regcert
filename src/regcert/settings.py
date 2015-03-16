@@ -30,7 +30,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=list)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[],
+                       cast=lambda v: [s.strip() for s in v.split(',')])
 
 
 # Login definition
