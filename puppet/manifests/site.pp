@@ -16,7 +16,7 @@ user { 'regcert':
 }
 
 $package_deps = [
-  'git', 'supervisor', 'npm',
+  'git', 'supervisor', 'npm', 'gettext',
 
   'libpq-dev',
 ]
@@ -146,6 +146,6 @@ nginx::resource::vhost { $regcert_vhost:
 
 nginx::resource::location { '/static/':
   vhost          => $regcert_vhost,
-  location_alias => '/srv/regcert/static-root/',
+  location_alias => '/srv/regcert/src/static_root/',
 }
 
