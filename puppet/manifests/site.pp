@@ -15,13 +15,19 @@ user { 'regcert':
   require => Group['regcert']
 }
 
+exec { 'apt-get update':
+  command => '/usr/bin/apt-get update',
+}
+
 $package_deps = [
   'git', 'supervisor', 'npm', 'gettext',
 
   'libpq-dev',
 ]
 
-package { $package_deps: }
+package { $package_deps: 
+  require => Exec['apt-get update'],
+}
 
 $regcert_dir = '/srv/regcert'
 $regcert_data_dir = '/srv/regcert_data'
