@@ -1,0 +1,5 @@
+puppetlabs-nodejs
+puppetlabs-vcsrepo
+jfryman-nginx
+stankevich-python
+tracywebtech-supervisor
