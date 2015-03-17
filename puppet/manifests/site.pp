@@ -36,8 +36,21 @@ vcsrepo { $regcert_dir:
   ensure   => latest,
   provider => git,
   source   => 'https://github.com/interlegis/regcert',
-  require  => Package['git'],
+  require  => [
+    Package['git'],
+  ],
 }
+
+file { "${regcert_dir}/bin/run_regcert":
+  mode => 775,
+  require => Vcsrepo[$regcert_dir],
+}
+
+file { $regcert_dir:
+  mode => 775,
+  require => Vcsrepo[$regcert_dir],
+}
+  
 
 # Bower ######################################################################
 
@@ -80,11 +93,15 @@ if !defined(Class['python']) {
 $regcert_venv_dir = '/srv/.virtualenvs/regcert'
 
 file { ['/srv/.virtualenvs',]:
-  ensure => 'directory',
+  ensure  => 'directory',
+  require => Vcsrepo[$regcert_dir],
 }
 
 python::virtualenv { $regcert_venv_dir:
-  require => File['/srv/.virtualenvs'],
+  require => [
+    File['/srv/.virtualenvs'],
+    Vcsrepo[$regcert_dir],
+  ],
 }
 
 python::requirements { "${regcert_dir}/requirements/prod-requirements.txt":
