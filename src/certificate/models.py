@@ -15,10 +15,10 @@ class CertificateBase(models.Model):
     verification_code = models.CharField(_('verification code'), max_length=32,
                                          unique=True)
     verification_code_date_time = models.DateTimeField(auto_now_add=True)
-    book_number = models.IntegerField(_('book number'))
+    book_number = models.CharField(_('book number'), max_length=10)
     book_sheet = models.IntegerField(_('book sheet'))
     book_date = models.DateField(_('book date'))
-    process_number = models.IntegerField(_('process number'))
+    process_number = models.CharField(_('process number'), max_length=50)
     accreditation = models.CharField(_('accreditation'), max_length=40)
     executive_director = models.CharField(_('executive director'),
                                           max_length=40)
