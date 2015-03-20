@@ -7,3 +7,4 @@ dj-database-url
 django_easy_pdf
 xhtml2pdf
 psycopg2
+pytz

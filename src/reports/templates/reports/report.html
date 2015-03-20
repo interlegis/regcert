@@ -1,4 +1,5 @@
 {% extends "easy_pdf/base.html" %}
+{% load tz %}
 {% block extra_style %}
 <style>
      @page {
@@ -63,7 +64,7 @@
         <p>{% if not student_report %}
             <b>Estudante:</b> {{ c.student_name }} -
         {% endif %}<b>Data de nascimento:</b> {{ c.student_birthday }} - <b>RG:</b> {{ c.student_rg }}</p>
-        <p><b>Código de conferência:</b> {{ c.verification_code }} - <b>Data/Hora do CC:</b> {{ c.verification_code_date_time }}</p>
+        <p><b>Código de conferência:</b> {{ c.verification_code }} - <b>Data/Hora do CC:</b> {{ c.verification_code_date_time | timezone:"America/Sao_Paulo" }}</p>
         <p><b>Criado por: </b> {{ c.created_by.first_name }} {{ c.created_by.last_name }}</p>
         {% if c.invalid %}
             <p><b>Invalidado por: </b> {{ c.invalidated_by.first_name }} {{ c.invalidated_by.last_name }}</p>

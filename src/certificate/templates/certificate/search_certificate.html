@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load tz %}
 {% load widget_tweaks %}
 
 {% block content %}
@@ -63,7 +64,7 @@
             <td>{{ certificate.verification_code }}</td>
             <td>{{ certificate.course_name }}</td>
             <td>{{ certificate.student_name }}</td>
-            <td>{{ certificate.verification_code_date_time }}</td>
+            <td>{{ certificate.verification_code_date_time | timezone:"America/Sao_Paulo" }}</td>
             <td>{{ certificate.created_by.first_name }} {{ certificate.created_by.last_name }}</td>
             <td>
                 {% if certificate.invalidated %}
