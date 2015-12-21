@@ -16,7 +16,7 @@ A instalação do Regcert pode ser feita de duas formas, usando o [módulo Puppe
 
 Clonando o repositório:
 ```
-$ git clone git@github.com:interlegis/regcert
+$ git clone git@github.com:interlegis/cd .
 ```
 
 Criando um ambiente virtual com virtualenvwrapper ([como instalar](http://virtualenvwrapper.readthedocs.org/)) para instalar as dependências python isoladamente:
@@ -46,6 +46,11 @@ DATABASE_URL=postgresql://user:secret@localhost/database_name
 Rodando migrações:
 ```
 $ ./src/manage.py migrate
+```
+
+Instalar as dependências do Bower
+```
+$ bower install
 ```
 
 Executando servidor de desenvolvimento:
