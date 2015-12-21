@@ -38,7 +38,7 @@ Exemplo:
 DEBUG=True
 SECRET_KEY=STRING_QUALQUER
 ALLOWED_HOSTS=127.0.0.1,127.0.0.2
-DATABASE_UR=postgresql://user:secret@localhost
+DATABASE_URL=postgresql://user:secret@localhost/database_name
 ```
 
 ### Executando
